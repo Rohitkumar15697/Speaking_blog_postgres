@@ -10,9 +10,12 @@
     .carousel-item img{opacity:0.9;}
     .carousel-item img:hover{opacity:1;}
 
-    a{text-decoration:none;}
+    
 
-
+            @media screen and (max-width:700px){
+       .maincarousel{height:75vh;}
+       
+     }
   
     {%endblock%}
 
@@ -22,7 +25,7 @@
 {%block body%}
 
 
-    <div class='container pt-4'>
+<div class='container maincarousel'>
         <div class='carousel slide carousel-fade' data-bs-ride='carousel' id='carouselslide'>
 
             <div class='carousel-inner'>
@@ -43,108 +46,69 @@
 
             </div>
 
-            <button class='carousel-control-prev' type='button' data-bs-target='#carouselslide' data-bs-slide='prev'>
-            <span class='carousel-control-prev-icon' aria-hidden='true'></span>
-            <span class='visually-hidden'>Previous</span>
-            </button>
-            <button class='carousel-control-next' type='button' data-bs-target='#carouselslide' data-bs-slide='next'>
-            <span class='carousel-control-next-icon' aria-hidden='true'></span>
-            <span class='visually-hidden'>Next</span>
-            </button>
-
-        </div>
-
-    </div>
-
-
-
-    <br><div class='container-fluid mt-44'>
-
-        <!--this is the left aside bar which is for topics of data-->
-        
-        
-        <div class='row'>
-            <div class='col-md-2'>
-             
-            </div>
-        
-       
-    
-            <div class='col-md-8 bg-light '>
-                    <h2>This is a SpeakinBlog Website Introduction:</h2><br>
+            
+                <div class='container'>
+                    <br>
                     <p>Put your views on the site and share your thoughts with all over the world.
+                    This website is in testing phase so other updates will be visible every day or in a week.
                        
                         <br><a href={%url 'register'%}>Create account Now!</a> 
                     </p>
-
-            </div>
-
-            
-            
-        </div>
-    </div>   <br>
-
-            <div class='container '>
-                <div class='row'>
-
-                    
-
-                        {%if blog_data%}
-                            <div class='col-md-8'>
-                            
-                                {%for data in blog_data%}
-                                
-                                    <div class='container mt-5 bg-light'>
-                                        
-                                        <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
-                                        <span class='text-muted'>Uploaded on {{data.date}}<br>
-                                        
-                                        <b>category-</b>{{data.topic}}</span><br><br>
-                                        
-                                        <p>{{data.post | truncatechars:250}}</p>
-                                        
-                                        <span class='text-muted'>Author- {{data.created_by}} </span><br>
-                                        
-
-                                                {{data.likes.count}} likes,
-
-                                                {{data.comments.count}} Comments
-
-                                            </div>
-                                    
-                               
-                                {%endfor%}
-                                
-                            </div>
-                        {% endif %}
-
-                    
-                    <div class='col-md-2'>
-                    </div>
-
-                    <div class='col-md-2 mt-5'>
-
-                        
-                        <p>Blog Titles</p>
-
-                            {%if data%}
-                                {%for data in data%}
-                                    
-                           
-                                         <p> <a href={%url 'detaildata' data.id%}> {{data.title}} </a></p>
-                        
-                                     
-                                {%endfor%}
-
-                            {%endif%}
-                            <br><a  href={%url 'listdata' %}>All blogs( {{count}} )</a>
-                    </div>
-
                 </div>
 
+        </div>
 
-           
-            </div>
+</div>
+
+
+
+        <!--this is the left aside bar which is for topics of data-->
+
+<div class='container'>
+    <h2><u>Latest Blogs-</u></h2>
+    <div class='row'>
+        {%if blog_data%}
+        <div class='col-md-8'>                            
+            {%for data in blog_data%}                          
+                <div class='container mt-5 bg-light p-2'>    
+                    <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
+                    <span class='text-muted'><b>Posted by:</b> {{data.created_by}}<br>
+                    <b>Posted on:</b> {{data.date}}<br>
+                    <b>category-</b>{{data.topic}}</span><br><br>
+                    <p>{{data.post | truncatechars:250}} <a href={%url 'detaildata' data.id %} class='text-info'></a></p> 
+                    {{data.likes.count}} likes,
+                    {{data.comments.count}} Comments
+
+                </div>                      
+            {%endfor%}
+                                
+        </div>
+        {% endif %}
+
+                    
+        <div class='col-md-2'>
+        </div>
+
+        <div class='col-md-2'>
+
+                 <br>       
+            <strong>All Blogs</strong><br><br>
+
+            {%if data%}
+                {%for data in data%}
+                                    
+                           
+                    <p> <a href={%url 'detaildata' data.id%}> {{data.title}} </a></p>
+                        
+                                     
+                {%endfor%}
+
+            {%endif%}
+            <a  href={%url 'listdata' %} class='text-info'>See all blogs( {{count}} )</a>
+        </div>
+
+    </div>        
+</div>
     
 <br><br>
 

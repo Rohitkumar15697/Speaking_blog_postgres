@@ -13,7 +13,7 @@
 {%block body%}
     
 
-<div class='container-fluid'>
+<div class='container'>
            
                     
            
@@ -47,22 +47,7 @@
                 
                     <!--This is for aside right side all links of blog titles--> 
 
-                    <h5>blogs</h5>
-
-                                    {%if data%}
-                                        {%for data in data%}
-                               
-                                    
-                                        <a href={%url 'detaildata' data.id%}> {{data.title}}</a><br><br>
-                                    
-                               
-                                    {%endfor%}
-                                {%endif%}
-                                    
-                               
-                                <a href={%url 'user_blogs' %}>All blogs( {{count}} )</a>
-               
-
+                    
                 
             </div>
         </div>
@@ -99,7 +84,23 @@
                                     {%endfor%}
                                 {% endif %}
 
-    </div>          
+    </div>     <br>
+    <h5>blogs</h5>
+
+                                    {%if data%}
+                                        {%for data in data%}
+                               
+                                    
+                                        <a href={%url 'detaildata' data.id%}> {{data.title}}</a><br><br>
+                                    
+                               
+                                    {%endfor%}
+                                {%endif%}
+                                    
+                               
+                              <br>  <a href={%url 'user_blogs' %} class='text-info'>All blogs( {{count}} )</a>
+               
+     
                     
             
 </div>
