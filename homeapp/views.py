@@ -113,10 +113,10 @@ def comment_view(request, pk):
         
         body=request.POST.get('comment_text')
 
-        post=blogpost.objects.get(pk=pk)
-        #name=get_object_or_404(User, pk=request.user.id)
+        post=get_object_or_404(blogpost, id=pk)
+        name=get_object_or_404(User, pk=request.user.id)
         obj=CommentModel(body=body)
-        obj.name=request.user
+        obj.name=name
         obj.post=post
         obj.save()
         return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
