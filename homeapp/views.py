@@ -29,7 +29,7 @@ def search_result(request):
     if search_element=="":
         return HttpResponse('No data for search!')
     else:
-        search_data=blogpost.objects.all().filter(Q(title__contains=search_element) | Q(topic__istartswith=search_element))
+        search_data=blogpost.objects.all().filter(Q(title__icontains=search_element) | Q(topic__istartswith=search_element))
         count=len(search_data)
         print(search_result)
     

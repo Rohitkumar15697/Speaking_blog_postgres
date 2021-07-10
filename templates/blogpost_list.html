@@ -15,7 +15,7 @@
 
 
     <div class='container'>
-        <h3>All blogs ({{blogpost_list.count}})</h3>
+        <p class='h2'>All blogs ({{blogpost_list.count}})</p><br>
             {%if blogpost_list%}
             
                 {%for data in blogpost_list%}
@@ -23,7 +23,7 @@
               
                     
 
-                    <p><a href={%url 'detaildata' data.pk %}>-{{data.title}}</a> <small>( Author- <b>{{data.created_by}})</b></small></p>   
+                    <p><a href={%url 'detaildata' data.pk %}>-{{data.title}}</a><br> <small class='text-muted'> <b> Author-</b>{{data.created_by}} <br>Posted on {{data.date}}</small></p>   
                     
                     
 

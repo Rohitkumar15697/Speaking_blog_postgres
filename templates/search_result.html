@@ -1,41 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{%extends 'base.html'%}
 
-    <title>search result</title>
-    <style>
-        a{text-decoration: none;}
 
-        a:hover{color:blue;}
-
-        section{width:80%;
-                margin:auto;}
-
-        article{
-            text-align: justify;
-                width:70%;
-                
-                background:rgb(240, 232, 232);
-                }
-    </style>
-
-</head>
-<body>
+{%block body%}
     
-    <h1>Search Result for  '{{searched}}'</h1>
+    <div class='container'>
+    <h2>Search Result for  <small>'{{searched}}'</small></h2>
     
    <p> <a href={%url 'home'%}> Back to Home page </a></p>
 
-<section>There are {{count}} results for '{{searched}}''
+    There is {{count}} results for '{{searched}}'<br><br>
                     {%if result%}
                     {%for result in result%}
 
-                <article>
+                
 
-                    <h4><a href={%url 'detaildata' result.id%}>{{result.title}}</a></h4>
+                    <p><a href={%url 'detaildata' result.id%}>{{result.title}} </a> <span class='text-muted'>uploaded on {{result.date}}</span></p>
                     
 
-                </article>
+                
             {%endfor%}
 
             {%else%}
@@ -43,9 +25,10 @@
 
             {%endif%}
 
-</section>
+        </div>
+
+{%endblock%}
 
 
-
-</body>
-</html>
+{%block footer%}
+{%endblock%}

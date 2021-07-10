@@ -13,7 +13,7 @@
     
 
             @media screen and (max-width:700px){
-       .maincarousel{height:250px;}
+       .maincarousel{height:300px;}
        
      }
   
@@ -61,11 +61,11 @@
 </div>
 
 
-<br>
+<br><br>
         <!--this is the left aside bar which is for topics of data-->
 
 <div class='container'>
-    <h2><u>Latest Blogs-</u></h2>
+    <h2 class='text-success'><u>Latest Blogs-</u></h2>
     <div class='row'>
         {%if blog_data%}
         <div class='col-md-8'>                            
@@ -79,10 +79,10 @@
                     {{data.likes.count}} likes,
                     {{data.comments.count}} Comments
 
-                </div>                      
+                </div>       <hr>               
             {%endfor%}
                                 
-        </div><hr>
+        </div>
         {% endif %}
 
                     
@@ -91,7 +91,7 @@
 
         <div class='col-md-2'>
 
-                 <br>       
+                        
             <strong>All Blogs</strong><br><br>
 
             {%if data%}
@@ -112,7 +112,7 @@
     
 <br><br>
 
-    <!-- Another container  -->
+    <!-- Another container 
 
 
     <div class='container border'>
@@ -129,7 +129,7 @@
 
         </div>
 
-    </div>
+    </div>   -->
 
 
 
