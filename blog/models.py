@@ -32,3 +32,7 @@ class CommentModel(models.Model):
 
     class Meta:
         ordering=['-date_added']
+
+
+#User Profile detail
+#class ProfileModel(models.Model):

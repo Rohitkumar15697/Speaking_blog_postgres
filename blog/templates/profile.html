@@ -16,29 +16,11 @@
 <div class='container'>
            
                     
-           
+           <a href={%url 'addblog'%}>+Add blog</a>
                 
     <div class='container pt-5'>                
         <div class='row'>
 
-            <div class='col-md-8'>           
-                        <h3>Create a Blog</h3><br>
-
-                    
-                        <!--This is the form for blog post-->
-
-                        <form method='post' class='form-group'>
-
-                            {%csrf_token%}
-
-                                
-                                 {{form.as_p}}
-
-
-                                <input type='submit' class='btn-primary' value='Post'>
-
-                            </form>
-            </div>
 
             <div class='col-md-2'>
 

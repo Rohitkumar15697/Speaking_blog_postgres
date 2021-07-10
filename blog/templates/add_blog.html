@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+
+
+
+{%block body%}
+
+    <div class='container'>           
+                        <h3>Create a Blog</h3><br>
+
+                    
+                        <!--This is the form for blog post-->
+
+                        <form method='post' class='form-group'>
+
+                            {%csrf_token%}
+
+                                
+                                 {{form.as_p}}
+
+
+                                <input type='submit' class='btn-primary' value='Post'>
+
+                            </form>
+            </div>
+
+{%endblock%}
