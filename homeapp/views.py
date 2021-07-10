@@ -24,6 +24,12 @@ def index(request):
     return render(request,'index.html',{'data':postdata,'blog_data':blog_data,'topics':topic_names,'count':count})
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
+
+
 def search_result(request):
     search_element=request.GET.get('search_me').strip()
     if search_element=="":

@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block style%}
+    
+{%endblock%}
+
+{%block body%}
+    <div class='container'>
+        <div class='row d-flex'>
+            <div class='col-md-3'>
+                <img src={%static 'img/ropic.jpg'%} class='rounded-circle' height='150' width='150'><br><br>
+            </div>
+            <div class='col-md-5 border '>
+                <strong class='h2'>Rohit Kumar</strong>
+                <p class='text-info mt-2'> <b>rk221377@gmail.com</b><br><br>
+                <a href='https://www.github.com/Rohitkumar15697'><img src={%static 'img/github.png'%} height='22px' width='22px'> Github</a>
+                , <a href='https://www.linkedin.com/in/rohit-kumar-b-tech-python-sql-html-django-8ba801186'><img src={%static 'img/linkedin.png'%} height='20px' width='20px'> Linkedin</a>
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
+{%block footer%}
+{%endblock%}
