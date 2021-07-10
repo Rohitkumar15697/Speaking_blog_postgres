@@ -9,5 +9,6 @@ urlpatterns = [
     path('addblog/', views.add_blog, name='addblog'),
     path('logout/',views.logoutme,name='logout'),
     path('search/',search_result),
+    path('delete_account/<int:pk>',views.DeleteAccount.as_view(), name='deleteaccount'),
 
 ]

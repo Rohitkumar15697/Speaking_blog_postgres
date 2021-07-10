@@ -1,7 +1,10 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
+from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import blogpost
+from django.views.generic import DeleteView
 
 from .forms import Myblogform
 
@@ -45,6 +48,11 @@ def add_blog(request):
 def logoutme(request):
     logout(request)
     return redirect('/')
+
+class DeleteAccount(DeleteView):
+    model=User
+    template_name='confirm_delete_account.html'
+    success_url= reverse_lazy('home')
 
 
 

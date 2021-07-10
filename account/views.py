@@ -12,6 +12,7 @@ def register(request):
         if fm.is_valid():
             fm.save()
             messages.info(request,'Account is created successfully, Go to login')
+            return redirect('register')
     else:
         fm=createuser()
     return render(request,'account.html',{'form':fm})

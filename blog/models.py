@@ -21,7 +21,6 @@ class blogpost(models.Model):
 
 
 class CommentModel(models.Model):
- 
     post = models.ForeignKey(blogpost ,related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length = 100)
     body = models.TextField()

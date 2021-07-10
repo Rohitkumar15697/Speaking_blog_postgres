@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+
+
+{%block body%}
+    <div class='container'>
+        {%if user.is_authenticated%}
+        <strong>Confirmation </strong><br>
+        <p class='text-muted'>You want to delete your account</p>
+        
+            <form method='post'>
+            {%csrf_token%}
+            <input type='submit' value='Yes' class='btn btn-danger'>
+            </form>
+
+        <button class='btn btn-primary' href={%url 'profile' %}>No</button>
+        {%endif%}
+
+    </div>
+
+{%endblock%}
+
+
+  
+{%block footer%}
+
+{%endblock%}

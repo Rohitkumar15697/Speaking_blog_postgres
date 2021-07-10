@@ -112,6 +112,7 @@ def comment_view(request, pk):
     if request.method=='POST' and 'comment_button' in request.POST:
         
         body=request.POST.get('comment_text')
+
         post=get_object_or_404(blogpost, id=pk)
         obj=CommentModel(body=body)
         obj.name=request.user
