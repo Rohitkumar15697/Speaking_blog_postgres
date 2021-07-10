@@ -113,7 +113,7 @@ def comment_view(request, pk):
         
         body=request.POST.get('comment_text')
 
-        post=get_object_or_404(blogpost, id=pk) #blogpost.objects.get(pk=pk) we can use also
+        post=blogpost.objects.get(pk=pk)
         obj=CommentModel(body=body)
         obj.name=request.user
         obj.post=post

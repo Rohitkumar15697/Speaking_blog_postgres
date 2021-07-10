@@ -20,8 +20,9 @@ class blogpost(models.Model):
 
 
 class CommentModel(models.Model):
-    post = models.ForeignKey(blogpost , on_delete=models.CASCADE,related_name='comments')
-    name = models.CharField(max_length = 100)
+    
+    post = models.ForeignKey(blogpost ,related_name='comments', on_delete=models.CASCADE)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
