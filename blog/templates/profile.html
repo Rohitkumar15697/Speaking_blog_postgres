@@ -38,10 +38,13 @@
 
                 {%endfor%}
             {% endif %}
+            
+            <a href={%url 'user_blogs' %} class='text-info'>All blogs</a>
             <hr>
         </div>
 
         <div class='col-md-2'>
+        
         </div><br>
         <div class='col-md-2'>
         <h5>blogs</h5>
@@ -56,14 +59,14 @@
                 {%endfor%}
             {%endif%}
                                     
-                               
-            <br>  <a href={%url 'user_blogs' %} class='text-info'>All blogs( {{count}} )</a>
-               
+   
         </div>
                     
-    </div>      
+    </div><br><br>      
 </div>
    
 {%endblock%}
-
+{%block footer%}
+<hr>
+{%endblock%}
 

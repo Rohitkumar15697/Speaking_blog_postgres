@@ -19,7 +19,7 @@ def profile(request):
     
     fulldata=postdata[:2]  #Printing only current blog on the profile
 
-    postdata=postdata[:10]  #Pring total 15 blogs title from first blog
+    postdata=postdata[:8]  #Pring total 15 blogs title from first blog
 
     return render(request,'profile.html' ,{'data':postdata,'fulldata':fulldata,'count':count})
 
