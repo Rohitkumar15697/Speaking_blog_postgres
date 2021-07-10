@@ -13,78 +13,55 @@
 {%block body%}
     
 
+      
+
 <div class='container'>
-           
+    <div class='row'>
+        <!--This is for  the profile webpage full data on middle of webpage -->
+        <div class='col-md-8'>
+            {%if fulldata%}
+                {%for data in fulldata%}
+
+                <div class='container bg-light p-2'>                                    
+                    <h4><a href={%url 'detaildata' data.id%}>{{data.title}}</a></h4>
+                    <span class='text-muted'>Author- {{data.created_by}} </span><br>
+                                                        
+                    <span class='text-muted'>Uploaded on {{data.date}}</span><br><br>                                     
                     
-           <a href={%url 'addblog'%}>+Add blog</a>
-                
-    <div class='container pt-5'>                
-        <div class='row'>
+                    <p>{{data.post}}  <br>
+                                                            
+                    </p><br>
+                    <small>{{data.likes.count}} likes</small> ,
 
+                   <small> {{data.comments.count}} Comments</small>
+                </div>  <br>                          
 
-            <div class='col-md-2'>
-
-
-
-                
-                    <!--This is for aside right side all links of blog titles--> 
-
-                    
-                
-            </div>
+                {%endfor%}
+            {% endif %}
+            <hr>
         </div>
-    </div>
-                                       
-<br>
-    <div class='container bg-light'>
-                        <!--This is for  the profile webpage full data on middle of webpage -->
 
-                                {%if fulldata%}
-                                    {%for data in fulldata%}
+        <div class='col-md-2'>
+        </div><br>
+        <div class='col-md-2'>
+        <h5>blogs</h5>
 
-                                        
-                                        
-                                            <h4><a href={%url 'detaildata' data.id%}>{{data.title}}</a></h4>
-                                            <span class='text-muted'>Author- {{data.created_by}} </span><br>
-                                            
-                                            <span class='text-muted'>Uploaded on {{data.date}}</span><br><br>
-
-                                            
-                                            <p>{{data.post}}  <br>
-                                                
-                                                </p><br>
-                                            
-                                            
-                                            
-                                        
-
-                                                {{data.likes.count}} likes,
-
-                                                {{data.comments.count}} Comments
-                                    
-
-                                    {%endfor%}
-                                {% endif %}
-
-    </div>     <br>
-    <h5>blogs</h5>
-
-                                    {%if data%}
-                                        {%for data in data%}
+            {%if data%}
+                {%for data in data%}
                                
                                     
-                                        <a href={%url 'detaildata' data.id%}> {{data.title}}</a><br><br>
+                <a href={%url 'detaildata' data.id%}> {{data.title}}</a><br><br>
                                     
                                
-                                    {%endfor%}
-                                {%endif%}
+                {%endfor%}
+            {%endif%}
                                     
                                
-                              <br>  <a href={%url 'user_blogs' %} class='text-info'>All blogs( {{count}} )</a>
+            <br>  <a href={%url 'user_blogs' %} class='text-info'>All blogs( {{count}} )</a>
                
-     
+        </div>
                     
-            
+    </div>      
 </div>
    
 {%endblock%}

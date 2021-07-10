@@ -9,6 +9,6 @@ class Myblogform(forms.ModelForm):
     class Meta:
         model=blogpost
         fields=['topic','title','post']
-        widgets={'title':forms.TextInput(attrs={'class':'form-control'}),'post':forms.Textarea(attrs={'class':'form-control'})}
+        widgets={'title':forms.TextInput(attrs={'class':'form-control'}),'post':forms.Textarea(attrs={'class':'form-control', 'style':'height:200px;'})}
 
 
