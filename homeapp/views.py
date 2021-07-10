@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render,render,HttpResponse,get_object_or_404
 from django.http import HttpResponseRedirect
 from blog.models import blogpost,CommentModel
-
+from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,DeleteView,UpdateView
 from django.urls import reverse_lazy,reverse
 
@@ -115,7 +115,7 @@ def comment_view(request, pk):
 
         post=blogpost.objects.get(pk=pk)
         obj=CommentModel(body=body)
-        obj.name=request.user
+        obj.name=get_object_or_404(User, pk=request.user.id)
         obj.post=post
         obj.save()
         return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
