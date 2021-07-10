@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class blogpost(models.Model):
-   
     created_by=models.ForeignKey(User,on_delete=models.CASCADE)
     topic=models.CharField(max_length=122,null=True,blank=False)
     title=models.CharField(max_length=250,blank=False)
@@ -21,7 +20,7 @@ class blogpost(models.Model):
 
 
 class CommentModel(models.Model):
-    post = models.ForeignKey(blogpost ,related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(blogpost , on_delete=models.CASCADE,related_name='comments')
     name = models.CharField(max_length = 100)
     body = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
