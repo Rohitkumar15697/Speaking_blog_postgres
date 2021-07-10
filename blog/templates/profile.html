@@ -16,7 +16,7 @@
       
 
 <div class='container'>
-    <a href={%url 'deleteaccount' user.id %}>Delete Account</a><br>
+    <a class='text-danger' href={%url 'deleteaccount' user.id %}>Delete Account</a><br><br>
     <div class='row'>
         <!--This is for  the profile webpage full data on middle of webpage -->
         <div class='col-md-8'>
@@ -67,7 +67,8 @@
 </div>
    
 {%endblock%}
+<br><br>
 {%block footer%}
-<hr>
+
 {%endblock%}
 
