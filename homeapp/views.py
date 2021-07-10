@@ -103,9 +103,14 @@ class category_list(ListView):
 @login_required(login_url='index')
 def like_post(request, pk):
     post=get_object_or_404(blogpost, id=request.POST.get('like'))
-    post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        
+    else:
+        post.likes.add(request.user)
+        
     
+    return redirect('detaildata',pk)
 
 
 def comment_view(request, pk):

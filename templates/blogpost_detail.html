@@ -45,7 +45,7 @@
                             {%csrf_token%}
 
                             {%if user in data.likes.all%}
-                                {{data.likes.count}} Likes <button type='button' name='like' value="{{data.id}}" class='btn btn-primary disabled btn-sm'>Like</button>
+                                {{data.likes.count}} Likes <button type='submit' name='like' value="{{data.id}}" class='btn btn-danger  btn-sm'>Unlike</button>
                                 {%else%}
                                 {{data.likes.count}} Likes <button type='submit' name='like' value="{{data.id}}" class='btn btn-primary btn-sm'>Like</button>
                             {%endif%}
