@@ -75,8 +75,8 @@
             {%for data in blog_data%}                          
                 <div class='container mt-5 bg-light p-2'>    
                     <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
-                    <small class='text-muted'><b>Posted by: </b>{{data.created_by}}<br>
-                    <b>Posted on:</b>{{data.date}}<br>
+                    <small class='text-muted'><b>Author: </b>{{data.created_by}}<br>
+                    <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br><br>
                     <p class='lead'>{{data.post | truncatechars:250}} </p> 
                     {{data.likes.count}} likes,
@@ -95,7 +95,7 @@
         <div class='col-md-2'>
 
                         
-            <strong>All Blogs</strong><br><br>
+            <br><strong>All Blogs</strong><br><br>
 
             {%if data%}
                 {%for data in data%}

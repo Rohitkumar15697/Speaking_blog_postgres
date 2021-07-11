@@ -41,7 +41,7 @@ def add_blog(request):
     
             obj.created_by=request.user  #this line fill the created_by column in models by current username automatically
             obj.save()
-            return redirect('addblog')
+            return redirect('profile')
     return render(request, 'add_blog.html',{'form':fm})
 
 @login_required(login_url='login')

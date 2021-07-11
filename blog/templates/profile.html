@@ -6,7 +6,15 @@
 {%block style%}
     a{text-decoration:none;}
 
+
+
+@media screen and (max-width:700px){
+
+    
+}
+
 {%endblock%}
+
 
 
 
@@ -14,9 +22,29 @@
     
 
       
-
 <div class='container'>
-    <a class='text-danger' href={%url 'deleteaccount' user.id %}>Delete Account</a><br><br>
+    <div class='row'>
+        <div class='col-md-10'>
+        </div>
+        <div class='col-md-2'>
+            
+            <div class="dropdown">
+            <a class="btn btn-light border dropdown-toggle"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class='text-dark'>{{user}}</span>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href={%url 'addblog'%}>Add Blog+</a></li>
+                <li><a class="dropdown-item" href={%url 'logout' %}>Logout</a></li>
+                <li><a class="dropdown-item text-danger" href={%url 'deleteaccount' user.id %}>Delete Account</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div><hr>
+
+<div class='container mt-5 pt-5'>
+    
     <div class='row'>
         <!--This is for  the profile webpage full data on middle of webpage -->
         <div class='col-md-8'>

@@ -50,9 +50,9 @@ class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
     def get_queryset(self):
-        return blogpost.objects.all().order_by('topic')
+        return blogpost.objects.all()
 
-        
+
 
 #detail of every blog when we click on any blog title
 
