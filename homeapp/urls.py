@@ -17,5 +17,6 @@ urlpatterns = [
     #path('category/', views.category_list.as_view(),name='category'),  #perfomr link operation on index.html
     path('like/<int:pk>', views.like_post, name='like_post'),
     path('detaildata/<int:pk>/comment', views.comment_view, name='comment'),
+    path('detaildata/<int:pk>/deletecomment', views.Delete_Comment, name='delete-comment'),
 
 ]

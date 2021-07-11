@@ -122,8 +122,14 @@
                         {%for comment in data.comments.all %}
                             
                         <li><strong>{{comment.name}}</strong> -
-                            <span class='text-muted'>{{comment.date_added.today}}</span> <br>
+                            <span class='text-muted'>{{comment.date_added}}</span>
                             {{comment.body}}</li><br>
+                            
+                            <!--delete comment link here-->
+                            {%if comment.name == user or user == data.created_by%}
+                            
+                            <a class='text-danger' href={%url 'delete-comment' comment.id %}> Delete</a><br>
+                            {%endif%}<hr>
                         {%endfor%}
                         <ol>
                 {%endif%}

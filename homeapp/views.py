@@ -126,3 +126,10 @@ def comment_view(request, pk):
         obj.post=post
         obj.save()
         return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
+    
+def Delete_Comment(request, pk):
+    comment=CommentModel.objects.filter(id=pk)
+    comment.delete()
+    return redirect('profile')
+
+    
