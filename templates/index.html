@@ -12,6 +12,8 @@
 
             @media screen and (max-width:700px){
        .maincarousel{height:400px;}
+        .bodycontaier{margin-top:60px;}
+
        
      }
   
@@ -49,9 +51,11 @@
                     <br>
                     <p>Put your views on the site and share your thoughts with all over the world.
                     This website is in testing phase so other updates will be visible every day or in a week.
-                       
+                        
                         <br><a href={%url 'register'%}>Create account Now!</a> 
                     </p>
+                    <p><b>Updates:</b><br>
+                     Delete Comment: If you don't like any comment on your blog,now you can delete that comment</p>
                 </div>
 
         </div>
@@ -60,9 +64,10 @@
 
 
 
+
         <!--this is the left aside bar which is for topics of data-->
 
-<div class='container'>
+<div class='container bodycontaier'>
     <p class='h2 text-success'><u>Latest Blogs-</u></p>
     <div class='row'>
         {%if blog_data%}
