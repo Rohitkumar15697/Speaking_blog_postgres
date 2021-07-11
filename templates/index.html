@@ -7,13 +7,11 @@
 
     {%block style%}
 
-    .carousel-item img{opacity:0.9;}
-    .carousel-item img:hover{opacity:1;}
 
     
 
             @media screen and (max-width:700px){
-       .maincarousel{height:300px;}
+       .maincarousel{height:400px;}
        
      }
   
@@ -26,7 +24,7 @@
 
 
 <div class='container maincarousel'>
-        <div class='carousel slide carousel-fade' data-bs-ride='carousel' id='carouselslide'>
+        <div class='carousel slide carousel-slide' data-bs-ride='carousel' id='carouselslide'>
 
             <div class='carousel-inner'>
 
@@ -61,21 +59,21 @@
 </div>
 
 
-<br><br>
+
         <!--this is the left aside bar which is for topics of data-->
 
 <div class='container'>
-    <h2 class='text-success'><u>Latest Blogs-</u></h2>
+    <p class='h2 text-success'><u>Latest Blogs-</u></p>
     <div class='row'>
         {%if blog_data%}
         <div class='col-md-8'>                            
             {%for data in blog_data%}                          
                 <div class='container mt-5 bg-light p-2'>    
                     <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
-                    <span class='text-muted'><b>Posted by: </b>{{data.created_by}}<br>
-                    <b>Posted on: </b>{{data.date}}<br>
-                    <b>Category: </b>{{data.topic}}</span><br><br>
-                    <p>{{data.post | truncatechars:250}} <a href={%url 'detaildata' data.id %} class='text-info'></a></p> 
+                    <small class='text-muted'><b>Posted by: </b>{{data.created_by}}<br>
+                    <b>Posted on:</b>{{data.date}}<br>
+                    <b><u>Category: </b>{{data.topic}}</u></small><br><br>
+                    <p class='lead'>{{data.post | truncatechars:250}} </p> 
                     {{data.likes.count}} likes,
                     {{data.comments.count}} Comments
 

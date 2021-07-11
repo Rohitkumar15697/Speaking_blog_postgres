@@ -1,3 +1,4 @@
+from blog.forms import Myblogform
 from django.shortcuts import redirect, render,render,HttpResponse,get_object_or_404
 from django.http import HttpResponseRedirect
 from blog.models import blogpost,CommentModel
@@ -73,8 +74,8 @@ class UpdateBlog(UpdateView):
 @method_decorator(login_required, name='dispatch')
 class EditBlog(UpdateView):
     model=blogpost
+    form_class=Myblogform
     template_name='edit_blog.html'
-    fields=['topic','title','post']
     success_url=reverse_lazy('profile')
 
 

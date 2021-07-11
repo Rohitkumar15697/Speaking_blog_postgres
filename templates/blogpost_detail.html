@@ -46,7 +46,7 @@
 
                             {%if user in data.likes.all%}
                                 {{data.likes.count}} Likes <button type='submit' name='like' value="{{data.id}}" class='btn btn-danger  btn-sm'>Unlike</button>
-                                {%else%}
+                            {%else%}
                                 {{data.likes.count}} Likes <button type='submit' name='like' value="{{data.id}}" class='btn btn-primary btn-sm'>Like</button>
                             {%endif%}
 
@@ -57,7 +57,7 @@
                         
         {%endif%}  
 
-        
+    <br>    
 
 
         <!--This is for delete and edit post in blogpost_detail page only-->
@@ -66,9 +66,9 @@
         {% if user.is_authenticated %}
             {%if user.id == data.created_by.id %}
 
-                        <a href={%url 'editblog' data.pk %}>Edit</a>&nbsp;&nbsp;
+                        <a href={%url 'editblog' data.pk %}>Edit</a>&nbsp;&nbsp;&nbsp;
 
-                        <a href={%url 'deleteblog' data.pk%}>Delete</a>
+                        <a href={%url 'deleteblog' data.pk%} class='text-danger'>Delete</a>
 
             {%endif%}
         {%endif%}
