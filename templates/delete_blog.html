@@ -15,7 +15,7 @@
     {%if user.is_authenticated%}
             {% if user.id == blogpost.created_by.id %}   
         <strong>Confirmation </strong><br>
-        <p class='text-muted'>You want to delete your account</p>
+        <p class='text-muted'>Delete Blog</p>
         
             <form method='post'>
             {%csrf_token%}
