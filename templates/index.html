@@ -73,7 +73,7 @@
                     <small class='text-muted'><b>Author: </b>{{data.created_by}}<br>
                     <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br><br>
-                    <p class='lead'>{{data.post | truncatechars:250}} </p> 
+                    <p class='lead'>{{data.post | truncatechars:250 | linebreaks}} </p> 
                     <small>{{data.likes.count}} likes</small> ,
                    <small> {{data.comments.count}} Comments</small>
 
