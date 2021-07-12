@@ -83,25 +83,26 @@
                 {%endfor%}
             {% endif %}
             
-            <a href={%url 'user_blogs' %} class='text-info'>See all blogs</a>
-            <hr>
+            
         </div>
 
-        <div class='col-md-2'>
+        <div class='col-md-1'>
         
         </div><br>
-        <div class='col-md-2'>
+        <div class='col-md-3'>
         <h5>blogs</h5>
 
             {%if data%}
                 {%for data in data%}
                                
                                     
-                <a href={%url 'detaildata' data.id%}> {{data.title}}</a><br><br>
+                <a href={%url 'detaildata' data.id%}> {{data.title | truncatechars:50}}</a><br><br>
                                     
-                               
+                              
                 {%endfor%}
             {%endif%}
+            <a href={%url 'user_blogs' %} class='text-info'>See all blogs</a>
+            <hr> 
                                     
    
         </div>
