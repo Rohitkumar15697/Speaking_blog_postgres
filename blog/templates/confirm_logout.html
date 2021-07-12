@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+    
+    <div class='container'>
+        {%if user.is_authenticated%}
+        <strong>Confirmation </strong><br>
+        <p class='text-muted'>You want to Logout your account</p>
+        
+            <a class='btn btn-danger' href={%url 'logout'%}>Yes</a><br><br>
+
+        <a class='btn btn-primary' href={%url 'profile' %}>No</a>
+        {%endif%}
+
+    </div>
+{%endblock%}
+
+{%block footer%}
+
+{%endblock%}

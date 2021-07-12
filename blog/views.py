@@ -45,6 +45,10 @@ def add_blog(request):
     return render(request, 'add_blog.html',{'form':fm})
 
 @login_required(login_url='login')
+def confirm_logout(request):
+    return render(request, 'confirm_logout.html')
+
+@login_required(login_url='login')
 def logoutme(request):
     logout(request)
     return redirect('/')
