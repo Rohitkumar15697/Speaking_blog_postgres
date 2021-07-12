@@ -69,13 +69,12 @@
 
                 <div class='container bg-light p-2'>                                    
                     <h4><a href={%url 'detaildata' data.id%}>{{data.title}}</a></h4>
-                    <span class='text-muted'>Author- {{data.created_by}} </span><br>
-                                                        
-                    <span class='text-muted'>Uploaded on {{data.date}}</span><br><br>                                     
-                    
-                    <p>{{data.post}}  <br>
+                   <small class='text-muted'><b>Author: </b>{{data.created_by}}<br>
+                    <b>Posted on: </b>{{data.date}}<br>
+                    <b><u>Category: </b>{{data.topic}}</u></small><br><br>
+                    <p class='lead'>{{data.post | truncatechars:250}} </p> 
                                                             
-                    </p><br>
+                    </p>
                     <small>{{data.likes.count}} likes</small> ,
 
                    <small> {{data.comments.count}} Comments</small>
@@ -84,7 +83,7 @@
                 {%endfor%}
             {% endif %}
             
-            <a href={%url 'user_blogs' %} class='text-info'>All blogs</a>
+            <a href={%url 'user_blogs' %} class='text-info'>See all blogs</a>
             <hr>
         </div>
 

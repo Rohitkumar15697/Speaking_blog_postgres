@@ -18,5 +18,6 @@ urlpatterns = [
     path('like/<int:pk>', views.like_post, name='like_post'),
     path('detaildata/<int:pk>/comment', views.comment_view, name='comment'),
     path('detaildata/<int:pk>/deletecomment', views.Delete_Comment, name='delete-comment'),
+    path('detaildata/<int:pk>/like_comment', views.like_my_comment, name='likecomment'),
 
 ]

@@ -79,8 +79,8 @@
                     <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br><br>
                     <p class='lead'>{{data.post | truncatechars:250}} </p> 
-                    {{data.likes.count}} likes,
-                    {{data.comments.count}} Comments
+                    <small>{{data.likes.count}} likes</small> ,
+                   <small> {{data.comments.count}} Comments</small>
 
                 </div>       <hr>               
             {%endfor%}

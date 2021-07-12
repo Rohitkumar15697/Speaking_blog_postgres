@@ -132,4 +132,19 @@ def Delete_Comment(request, pk):
     comment.delete()
     return redirect('profile')
 
+def like_my_comment(request,pk):
+    
+    comment_post=get_object_or_404(CommentModel, id=pk)
+    
+    ct=CommentModel.objects.filter(id=pk)
+    for ct in ct:
+        blog_id=ct.post.id
+
+    if comment_post.comment_likes.filter(id=request.user.id).exists():
+        comment_post.comment_likes.remove(request.user)
+        
+    else:
+        comment_post.comment_likes.add(request.user)
+    
+    return redirect('detaildata',blog_id)
     
