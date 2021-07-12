@@ -1,13 +1,15 @@
 {%extends 'base.html' %}
 
-
-   {%block title%} Blog {{data.id}} {%endblock%}
+    {%block head%} 
+        <meta name='description' content={{data.post | truncatechars:100}}>
+     {%endblock%}
+    {%block title%} {{data.title}} {%endblock%}
 
     {%block style%}
 
         .comment_like_button{font-size:11px;}
     {%endblock%}
-    
+
     
 
 
@@ -21,7 +23,7 @@
         
 
         <div class='col-md-8'>
-        <b class='h2'>{{data.title}}</b><br>
+        <h2>{{data.title}}</h2>
         <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
         
         <small class='text-muted'l><b>Posted on: </b>- {{data.topic}}</small> <br>
@@ -117,14 +119,14 @@
                         <!--if there is already some comments-->
                         <strong>Total Comments</strong> - {{data.comments.count}} <br>
                         
-                        <ol><br>
+                        <br>
 
                         <!--print all comments to template-->
                         {%for comment in data.comments.all %}
                             
-                        <li><strong>{{comment.name}}</strong> -
+                        <strong>{{comment.name}}</strong> -
                             <span class='text-muted'>{{comment.date_added}}</span><br>
-                            {{comment.body}}</li><br>
+                            <p>{{comment.body}}</p><br>
 
 
                             <!--Like comment-->
@@ -148,7 +150,7 @@
                             <a class='text-danger' href={%url 'delete-comment' comment.id %}> Delete</a><br>
                             {%endif%}<hr>
                         {%endfor%}
-                        <ol>
+                        
                 {%endif%}
         </div>
         
