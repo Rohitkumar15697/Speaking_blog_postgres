@@ -5,12 +5,19 @@
 
 {%block style%}
     a{text-decoration:none;}
-
+    .userdropdown{padding:0px;
+                    }
+    .innerdropdown li{font-size:14px;
+                    padding:0px;
+                    
+                    
+                    }
 
 
 @media screen and (max-width:700px){
-
-    
+  
+    .userdropdown{padding:0px;
+                    }
 }
 
 {%endblock%}
@@ -27,17 +34,17 @@
         <div class='col-md-2'>
             
             <nav class="navbar navbar-expand-lg navbar-light ">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ul class="list-group me-auto mb-2 mb-lg-0 userdropdown">
+                    
+                    <li class="nav-item dropdown list-group-item userdropdown border-0 bg-light">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" aria-expanded="false">
                             {{user}}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href={%url 'addblog'%}>Add Blog+</a></li>
-                            <li><a class="dropdown-item" href={%url 'logout' %}>Logout</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href={%url 'deleteaccount' user.id %}>Delete Account</a></li>
+                        <ul class="dropdown-menu innerdropdown" aria-labelledby="navbarDropdown">
+                            <li class='list-group-item'><a class="dropdown-item" href={%url 'addblog'%}>Add Blog</a></li>
+                            <li class='list-group-item'><a class="dropdown-item" href={%url 'logout' %}>Logout</a></li>
+                           
+                            <li class='list-group-item'> <a class="dropdown-item text-danger" href={%url 'deleteaccount' user.id %}>Delete Account</a></li>
                         </ul>
                     </li>
                 </ul>
