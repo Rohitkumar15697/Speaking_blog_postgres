@@ -128,9 +128,14 @@ def comment_view(request, pk):
         return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
     
 def Delete_Comment(request, pk):
+    #Finding the id of the current blog 
+    ct=CommentModel.objects.filter(id=pk)
+    for ct in ct:
+        blog_id=ct.post.id  #post is the foreign key for blogpost model so we use this
     comment=CommentModel.objects.filter(id=pk)
     comment.delete()
-    return redirect('profile')
+   
+    return redirect('detaildata',blog_id)
 
 def like_my_comment(request,pk):
     
