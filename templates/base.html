@@ -18,6 +18,7 @@
     
     
     <style>
+   
     .footer{
        
           bottom:0;
@@ -27,7 +28,8 @@
         
     }
     a{text-decoration:none;}
-    a:hover{color:green;}
+    a:hover{color:purple;}
+
     {%block style%}
     
     {%endblock%}
@@ -39,6 +41,11 @@
     </style>
 </head>
 <body>
+    {%url 'home' as home%}
+    {%url 'about' as about%}
+    {%url 'profile' as profile%}
+    {%url 'register' as register%}
+    {%url 'login' as login%}
 
 
     <!--Header part of the home page with navigation-->
@@ -49,22 +56,22 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"  >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class='nav-item'><a class='nav-link' aria-current="page" href={%url 'home'%}>Home</a></li>
+    <div class="collapse navbar-collapse navbarhover" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item"><a class='nav-link' {%if request.path == home%}style="color:purple;"{%endif%} aria-current="page" href={{home}}>Home</a></li>
         
         {% if not user.is_authenticated%}
-          <li class='nav-item'><a class='nav-link' href={%url 'about' %}>About</a></li>
+          <li class='nav-item' ><a class='nav-link' {%if request.path == about%}style="color:purple;"{%endif%} href={{about}}>About</a></li>
         {%endif%}
 
         {%if user.is_authenticated %}
-            <li class='nav-item'><a class='nav-link' href={% url 'profile' %}> Profile</a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == profile%}style="color:purple;"{%endif%} href={% url 'profile' %}> Profile</a></li>
             
         
            {%else%}             
             
-            <li class='nav-item'><a class='nav-link' href={%url 'register' %}>Register </a></li>
-            <li class='nav-item'><a class='nav-link' href={%url 'login'%}>Login </a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == register%}style="color:purple;"{%endif%} href={%url 'register' %}>Register </a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == login%}style="color:purple;"{%endif%} href={%url 'login'%}>Login </a></li>
 
         {%endif%}
            
@@ -97,7 +104,7 @@
 
 
 {%block footer%}
-        <div class='container-fluid bg-dark text-white mt-5 footer'>
+        <div class='container-fluid bg-dark text-white mt-5 footer' id='footer'>
 
             &copy; Copyright
         

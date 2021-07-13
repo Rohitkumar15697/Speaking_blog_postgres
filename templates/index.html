@@ -51,11 +51,12 @@
                     </p>
                     <p><b>Updates:</b><br>
                      Delete Comment: If you don't like any comment on your blog,now you can delete that comment</p>
-                </div>
+                </div><a href='#footer'>Go to last</a>
 
         </div>
 
 </div>
+
 
 
 
@@ -70,9 +71,9 @@
             {%for data in blog_data%}                          
                 <div class='container mt-5 bg-light p-2'>    
                     <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
-                    <small class='text-muted'><b>Author: </b>{{data.created_by}}<br>
+                    <small class='text-muted'>
                     <b>Posted on: </b>{{data.date}}<br>
-                    <b><u>Category: </b>{{data.topic}}</u></small><br><br>
+                    <b><u>Category: </b>{{data.topic}}</u></small><br>
                     <p class='lead'>{{data.post | truncatechars:250 | linebreaks}} </p> 
                     <small>{{data.likes.count}} likes</small> ,
                    <small> {{data.comments.count}} Comments</small>
