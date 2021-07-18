@@ -7,7 +7,7 @@
 
     {%block style%}
 
-
+        
     
 
            
@@ -51,7 +51,7 @@
                     </p>
                     <p><b>Updates:</b><br>
                      Delete Comment: If you don't like any comment on your blog,now you can delete that comment</p>
-                </div><a href='#footer'>Go to last</a>
+               
 
         </div>
 
@@ -61,15 +61,14 @@
 
 
 
-        <!--this is the left aside bar which is for topics of data-->
+
 
 <div class='container bodycontaier'>
-    <p class='h2 text-success'><u>Latest Blogs-</u></p>
     <div class='row'>
         {%if blog_data%}
         <div class='col-md-8'>                            
             {%for data in blog_data%}                          
-                <div class='container mt-5 bg-light p-2'>    
+                <div class='container mt-5 p-2 blogcontainer'>    
                     <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
                     <small class='text-muted'>
                     <b>Posted on: </b>{{data.date}}<br>
@@ -109,7 +108,7 @@
     
 <br><br>
 
-    <!-- Another container 
+    <!-- Another container    -->
 
 
     <div class='container border'>
@@ -126,7 +125,7 @@
 
         </div>
 
-    </div>   -->
+    </div>
 
 
 

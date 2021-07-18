@@ -26,13 +26,13 @@
         <h2>{{data.title}}</h2>
         <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
         
-        <small class='text-muted'l><b>Posted on: </b>- {{data.topic}}</small> <br>
+        <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
 
         <!--Printing date of created-->
-        <small class='text-muted'><u><b>Category: </b>{{data.date}}</u></small>
+        <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small>
 
         
-               <br<br>
+               <br><br>
                
                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p><hr>
                 
