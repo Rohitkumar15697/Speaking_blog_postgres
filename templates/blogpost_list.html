@@ -23,14 +23,9 @@
               
                     
 
-                    <p ><a href={%url 'detaildata' data.pk %}>{{data.title}}</a><br>
+                    <p ><a href={%url 'detaildata' data.pk %}>{{data.title}}</a>
                     <small class='text-muted'> <b> Author: </b>{{data.created_by}} </small><br>
-                    <small class='text-muted'> <b> Posted on: </b> {{data.date}}</small><br>
                     <small class='text-muted'> <b> Category: </b>{{data.topic}}</small></p>   
-                    
-                    
-
-              
 
                 {%endfor%}
 

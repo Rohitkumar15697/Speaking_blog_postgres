@@ -14,7 +14,7 @@ from django.db.models import Q
 
 def index(request):
     count=len(blogpost.objects.all())
-    postdata=list(blogpost.objects.all()[:30])
+    postdata=list(blogpost.objects.all()[:15])
     
     #This is for showing topic names in index page
     topic_names=blogpost.objects.values_list('topic',flat=True).distinct() 

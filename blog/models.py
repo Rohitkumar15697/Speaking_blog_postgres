@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class blogpost(models.Model):
    
     created_by=models.ForeignKey(User,on_delete=models.CASCADE)
-    topic=models.CharField(max_length=122,null=True,blank=False)
+    topic=models.CharField(max_length=122,null=False)
     title=models.CharField(max_length=250,blank=False)
     post=models.TextField()
     likes=models.ManyToManyField(User, related_name='blog_posts')
