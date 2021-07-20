@@ -13,7 +13,11 @@
     .ropic img:hover{transform:scale(0.9);}
         
     
+    @media screen and (max-width:700px){
+        .carousel-inner{height:50vh;}
+        .intro-text{margin-top:-180px;}
 
+    }
            
   
     {%endblock%}
@@ -46,7 +50,7 @@
             </div>
 
             
-                <div>
+                <div class='intro-text'>
                     <br><br>
                     <h2  style='text-align:center;color:red;'>Introduction to <span style='color:rgb(32, 177, 32);'>SpeakingBlog</span></h2><br>
                     <p class='text-muted'>Put your views on the site and share your thoughts with all over the world.
@@ -55,7 +59,8 @@
                         <a href={% url 'register' %}>Create account Now!</a> 
                     </p>
                     
-               
+                    <strong>New Updates:</strong>
+                    <p class='text-muted'>Now when a new account is created a thank you email is send to the given email address</p>
 
                 </div>
 
