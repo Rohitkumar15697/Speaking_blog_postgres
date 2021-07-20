@@ -15,7 +15,8 @@ def register(request):
         print(useremail)
         #Send E-mail
         email_subject="From SpeakingBlog"
-        email_message='Thank you for creating account on SpeakingBlog. Now you can post blogs and spread your thoughts'
+        email_message='Thank you for creating account on SpeakingBlog. Now you can post blogs and spread your thoughts. Now login (speakingblog.herokuapp.com/login) and enjoy your with you blogging account'
+                        
         email_from=settings.EMAIL_HOST_USER
         email_to=[useremail]
         send_mail(email_subject,email_message,email_from,email_to, fail_silently=False)
