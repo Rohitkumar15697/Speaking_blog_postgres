@@ -19,12 +19,12 @@ def register(request):
         email_subject="From SpeakingBlog"
         email_message=f"Thank you for creating account with username ' {username} ' on SpeakingBlog website. Now you can post blogs and spread your thoughts. Go and login (https://speakingblog.herokuapp.com/account/login/) and enjoy your with you blogging account. "                
         email_from=settings.EMAIL_HOST_USER
-        email_to=[useremail]
+        email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
         send_mail(email_subject,email_message,email_from,email_to, fail_silently=False)
 
         if fm.is_valid():
             fm.save()
-            messages.info(request,'Account is created successfully, Go to login')
+            messages.success(request,'Account is created successfully!')
             return redirect('register')
     else:
         fm=createuser()
