@@ -23,7 +23,7 @@ sitemaps={'blog':Blogpost_Sitemap()}
 
 urlpatterns = [
     path('superadmin/', admin.site.urls),
-    path('', include(('homeapp.urls', 'homeapp'), namespace='homeapp')),
+    path('', include(('homeapp.urls','homeapp'), namespace='homeapp')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('account/',include('account.urls')),
     path('blog/',include('blog.urls')),
