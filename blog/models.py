@@ -20,8 +20,8 @@ class blogpost(models.Model):
     class Meta:
         ordering=['-date']
     
-    #def get_absolute_url(self):
-     #   return reverse("home:detaildata",args=[str(self.id)])
+    def get_absolute_url(self):
+        return reverse("home:detaildata",args=[str(self.id)])
     
 
 
