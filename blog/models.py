@@ -20,8 +20,8 @@ class blogpost(models.Model):
     class Meta:
         ordering=['-date']
     
-    def get_absolute_url(self,):
-        return reverse('homeapp:detaildata',args=[str(self.id)])
+    def get_absolute_url(self):
+        return reverse("homeapp:detaildata",args=[str(self.id)])
     
 
 
@@ -38,7 +38,7 @@ class CommentModel(models.Model):
     class Meta:
         ordering=['-date_added']
 
-
+ 
 
 
 #User Profile detail

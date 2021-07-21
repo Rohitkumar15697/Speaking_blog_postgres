@@ -79,7 +79,7 @@
         <div class='col-md-8'>                            
             {%for data in blog_data%}                          
                 <div class='container mt-5 p-2 bg-light'>    
-                    <h5><a href={{detaildata.get_absolute.url}}> {{data.title}}</a></h5>
+                    <h5><a href={%url 'detaildata' data.id%}> {{data.title}}</a></h5>
                     <small class='text-muted'>
                     <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br>
