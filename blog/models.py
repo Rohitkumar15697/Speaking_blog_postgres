@@ -21,7 +21,7 @@ class blogpost(models.Model):
         ordering=['-date']
     
     def get_absolute_url(self):
-        return reverse("home:detaildata",args=[str(self.id)])
+        return reverse("homeapp:detaildata",args=[str(self.id)])
     
 
 
