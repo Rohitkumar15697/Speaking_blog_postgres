@@ -29,7 +29,7 @@ SECRET_KEY = config('SecretKey')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','speakingblog.herokuapp.com','www.speaksera.co.in','speaksera.co.in','speaksera']
+ALLOWED_HOSTS = ['127.0.0.1','speakingblog.herokuapp.com','www.speaksera.co.in','speaksera.co.in','speaksera.in']
 
 
 # Application definition
