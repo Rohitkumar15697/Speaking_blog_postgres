@@ -69,9 +69,9 @@
         {% if user.is_authenticated %}
             {%if user.id == data.created_by.id %}
 
-                        <a href={%url 'editblog' data.pk %}>Edit</a>&nbsp;&nbsp;&nbsp;
+                        <a href={%url 'homeapp:editblog' data.pk %}>Edit</a>&nbsp;&nbsp;&nbsp;
 
-                        <a href={%url 'deleteblog' data.pk%} class='text-danger'>Delete</a>
+                        <a href={%url 'homeapp:deleteblog' data.pk%} class='text-danger'>Delete</a>
 
             {%endif%}
         {%endif%}
@@ -132,7 +132,7 @@
 
                             <!--Like comment-->
                             {%if user.is_authenticated%}   
-                                <form method='post' action="{% url 'likecomment' comment.id%}" >
+                                <form method='post' action="{% url 'homeapp:likecomment' comment.id%}" >
                                     {%csrf_token%}
                                     <small>{{comment.comment_likes.count}} Likes</small>
                                     {%if user in comment.comment_likes.all %}
@@ -148,7 +148,7 @@
                             <!--delete comment link here-->
                             {%if comment.name == user or user == data.created_by%}
                             
-                            <a class='text-danger' href={%url 'delete-comment' comment.id %}> Delete</a><br>
+                            <a class='text-danger' href={%url 'homeapp:delete-comment' comment.id %}> Delete</a><br>
                             {%endif%}<hr>
                         {%endfor%}
                         

@@ -111,7 +111,7 @@ def like_post(request, pk):
         post.likes.add(request.user)
         
     
-    return redirect('detaildata',pk)
+    return redirect('homeapp:detaildata',pk)
 
 
 def comment_view(request, pk):
@@ -125,7 +125,7 @@ def comment_view(request, pk):
         obj.name=name
         obj.post=post
         obj.save()
-        return HttpResponseRedirect(reverse('detaildata',args=[str(pk)]))
+        return HttpResponseRedirect(reverse('homeapp:detaildata',args=[str(pk)]))
     
 def Delete_Comment(request, pk):
     #Finding the id of the current blog 
@@ -135,7 +135,7 @@ def Delete_Comment(request, pk):
     comment=CommentModel.objects.filter(id=pk)
     comment.delete()
    
-    return redirect('detaildata',blog_id)
+    return redirect('homeapp:detaildata',blog_id)
 
 def like_my_comment(request,pk):
     
@@ -151,5 +151,5 @@ def like_my_comment(request,pk):
     else:
         comment_post.comment_likes.add(request.user)
     
-    return redirect('detaildata',blog_id)
+    return redirect('homeapp:detaildata',blog_id)
     
