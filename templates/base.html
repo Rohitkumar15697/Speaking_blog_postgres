@@ -41,8 +41,8 @@
     </style>
 </head>
 <body>
-    {%url 'home' as home%}
-    {%url 'about' as about%}
+    {%url 'homeapp:home' as home%}
+    {%url 'homeapp:about' as about%}
     {%url 'profile' as profile%}
     {%url 'register' as register%}
     {%url 'login' as login%}
@@ -52,7 +52,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light headernav" >
   <div class="container-fluid">
-    <a class='navbar-brand fs-1 fw-bold' style="color:rgb(39, 161, 39);" href={%url 'home' %}>SpeakingBlog</a>
+    <a class='navbar-brand fs-1 fw-bold' style="color:rgb(39, 161, 39);" href={{home}}>SpeakingBlog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"  >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -61,17 +61,17 @@
         <li class="nav-item"><a class='nav-link' {%if request.path == home%} style="color:purple;"{%endif%} aria-current="page" href={{home}}>Home</a></li>
         
         {% if not user.is_authenticated%}
-          <li class='nav-item' ><a class='nav-link' {%if request.path == about%} style="color:purple;"{%endif%} href={{about}}>About</a></li>
+          <li class='nav-item' ><a class='nav-link' {%if request.path == about %} style="color:purple;"{%endif%} href={{about}}>About</a></li>
         {%endif%}
 
         {%if user.is_authenticated %}
-            <li class='nav-item'><a class='nav-link' {%if request.path == profile%} style="color:purple;"{%endif%} href={% url 'profile' %}> Profile</a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == profile %} style="color:purple;"{%endif%} href={{profile}}> Profile</a></li>
             
         
            {%else%}             
             
-            <li class='nav-item'><a class='nav-link' {%if request.path == register%} style="color:purple;"{%endif%} href={%url 'register' %}>Register </a></li>
-            <li class='nav-item'><a class='nav-link' {%if request.path == login%} style="color:purple;"{%endif%} href={%url 'login'%}>Login </a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == register%} style="color:purple;"{%endif%} href={{register}}>Register </a></li>
+            <li class='nav-item'><a class='nav-link' {%if request.path == login%} style="color:purple;"{%endif%} href={{login}}>Login </a></li>
 
         {%endif%}
            

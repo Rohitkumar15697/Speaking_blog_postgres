@@ -14,14 +14,16 @@ class blogpost(models.Model):
     date=models.DateTimeField(auto_now_add=True )
 
 
+    
     def __str__(self):
         return ' (' +str(self.created_by)+') Title- '+self.title
+    
+    def get_absolute_url(self):
+        return reverse('homeapp:detaildata', args=[str(self.id)])
     
     class Meta:
         ordering=['-date']
     
-    def get_absolute_url(self):
-        return reverse("homeapp:detaildata",args=[str(self.id)])
     
 
 
@@ -38,7 +40,6 @@ class CommentModel(models.Model):
     class Meta:
         ordering=['-date_added']
 
- 
 
 
 #User Profile detail

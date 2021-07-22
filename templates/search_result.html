@@ -6,7 +6,7 @@
     <div class='container'>
     <h2>Search Result for  <small>'{{searched}}'</small></h2>
     
-   <p> <a href={%url 'home'%}> Back to Home page </a></p>
+   <p> <a href={%url 'homeapp:home'%}> Back to Home page </a></p>
 
     There is {{count}} results for '{{searched}}'<br><br>
                     {%if result%}
@@ -14,7 +14,7 @@
 
                 
 
-                    <p><a href={%url 'detaildata' result.id%}>{{result.title}} </a> <span class='text-muted'>uploaded on {{result.date}}</span></p>
+                    <p><a href={%url 'homeapp:detaildata' result.id%}>{{result.title}} </a> <span class='text-muted'>uploaded on {{result.date}}</span></p>
                     
 
                 

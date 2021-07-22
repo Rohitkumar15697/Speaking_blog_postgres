@@ -43,7 +43,7 @@
         <!--Blog Like section-->
         
         {%if user.is_authenticated%}        
-                        <form method='post' action="{%url 'like_post' data.pk %}" class='form-group'>
+                        <form method='post' action="{%url 'homeapp:like_post' data.pk %}" class='form-group'>
                                                     
                             {%csrf_token%}
 
@@ -98,7 +98,7 @@
 
                 {%if user.is_authenticated%}
                             <div class='col-md-6'>
-                                <form method='post' action="{%url 'detaildata' data.id %}/comment">
+                                <form method='post' action="{%url 'homeapp:detaildata' data.id %}/comment">
                                     {%csrf_token%}
                                     <div class='form-group'>
                                         
