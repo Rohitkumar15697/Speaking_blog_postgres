@@ -10,10 +10,11 @@
         
             <form method='post'>
             {%csrf_token%}
-            <input type='submit' value='Yes' class='btn btn-danger'>
+            <input type='submit' value='Yes' class='btn btn-danger'> &nbsp; &nbsp;
+            <a class='btn btn-primary' href={%url 'profile' %}>No</a>
             </form>
 
-        <a class='btn btn-primary' href={%url 'profile' %}>No</a>
+        
         {%endif%}
 
     </div>
