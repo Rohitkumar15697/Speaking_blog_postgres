@@ -102,8 +102,8 @@ class category_list(ListView):
         return blogpost.objects.all().filter(topic=self.request.GET.get('cate'))'''
 
 @login_required(login_url='index')
-def like_post(request, pk):
-    post=get_object_or_404(blogpost, id=request.POST.get('like'))
+def like_post(request, slug):
+    post=get_object_or_404(blogpost, slug=request.POST.get('like'))
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
         
@@ -111,45 +111,23 @@ def like_post(request, pk):
         post.likes.add(request.user)
         
     
-    return redirect('homeapp:detaildata',pk)
+    return redirect('homeapp:detaildata',slug)
 
 
-def comment_view(request, pk):
+def comment_view(request, slug):
     if request.method=='POST' and 'comment_button' in request.POST:
         
         body=request.POST.get('comment_text')
 
-        post=get_object_or_404(blogpost, id=pk)
+        post=get_object_or_404(blogpost, slug=slug)
         name=get_object_or_404(User, pk=request.user.id)
         obj=CommentModel(body=body)
         obj.name=name
         obj.post=post
         obj.save()
-        return HttpResponseRedirect(reverse('homeapp:detaildata',args=[str(pk)]))
+        return HttpResponseRedirect(reverse('homeapp:detaildata',args=[slug]))
     
-def Delete_Comment(request, pk):
-    #Finding the id of the current blog 
-    ct=CommentModel.objects.filter(id=pk)
-    for ct in ct:
-        blog_id=ct.post.id  #post is the foreign key for blogpost model so we use this
-    comment=CommentModel.objects.filter(id=pk)
-    comment.delete()
-   
-    return redirect('homeapp:detaildata',blog_id)
 
-def like_my_comment(request,pk):
-    
-    comment_post=get_object_or_404(CommentModel, id=pk)
-    
-    ct=CommentModel.objects.filter(id=pk)
-    for ct in ct:
-        blog_id=ct.post.id
 
-    if comment_post.comment_likes.filter(id=request.user.id).exists():
-        comment_post.comment_likes.remove(request.user)
-        
-    else:
-        comment_post.comment_likes.add(request.user)
-    
-    return redirect('homeapp:detaildata',blog_id)
+
     

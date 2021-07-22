@@ -43,14 +43,14 @@
         <!--Blog Like section-->
         
         {%if user.is_authenticated%}        
-                        <form method='post' action="{%url 'homeapp:like_post' data.pk %}" class='form-group'>
+                        <form method='post' action="{%url 'homeapp:like_post' data.slug %}" class='form-group'>
                                                     
                             {%csrf_token%}
 
                             {%if user in data.likes.all%}
-                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.id}}" class='btn btn-danger  btn-sm'>Unlike</button>
+                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-danger  btn-sm'>Unlike</button>
                             {%else%}
-                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.id}}" class='btn btn-primary btn-sm'>Like</button>
+                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-primary btn-sm'>Like</button>
                             {%endif%}
 
                         </form>
@@ -69,9 +69,9 @@
         {% if user.is_authenticated %}
             {%if user.id == data.created_by.id %}
 
-                        <a href={%url 'homeapp:editblog' data.pk %}>Edit</a>&nbsp;&nbsp;&nbsp;
+                        <a href={%url 'homeapp:editblog' data.slug %}>Edit</a>&nbsp;&nbsp;&nbsp;
 
-                        <a href={%url 'homeapp:deleteblog' data.pk%} class='text-danger'>Delete</a>
+                        <a href={%url 'homeapp:deleteblog' data.slug%} class='text-danger'>Delete</a>
 
             {%endif%}
         {%endif%}
@@ -98,7 +98,7 @@
 
                 {%if user.is_authenticated%}
                             <div class='col-md-6'>
-                                <form method='post' action="{%url 'homeapp:detaildata' data.id %}/comment">
+                                <form method='post' action="{%url 'homeapp:detaildata' data.slug %}/comment">
                                     {%csrf_token%}
                                     <div class='form-group'>
                                         
@@ -130,26 +130,8 @@
                             <p>{{comment.body}}</p>
 
 
-                            <!--Like comment-->
-                            {%if user.is_authenticated%}   
-                                <form method='post' action="{% url 'homeapp:likecomment' comment.id%}" >
-                                    {%csrf_token%}
-                                    <small>{{comment.comment_likes.count}} Likes</small>
-                                    {%if user in comment.comment_likes.all %}
-                                        <button type='submit' class='btn btn-danger btn-sm' value={{data.comments.id}}>Unlike</button>
-                                        
-                                        {%else%}
-                                            <button type='submit' class='btn btn-primary btn-sm' value={{data.comments.id}}>Like</button>
-                                    {%endif%}
-                                </form>
-                                
-                            {%endif%}
-
-                            <!--delete comment link here-->
-                            {%if comment.name == user or user == data.created_by%}
-                            
-                            <a class='text-danger' href={%url 'homeapp:delete-comment' comment.id %}> Delete</a><br>
-                            {%endif%}<hr>
+                           
+<hr>
                         {%endfor%}
                         
                 {%endif%}

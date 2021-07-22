@@ -68,7 +68,7 @@
                 {%for data in fulldata%}
 
                 <div class='container bg-light p-2'>                                    
-                    <h4><a href={%url 'homeapp:detaildata' data.id%}>{{data.title}}</a></h4>
+                    <h4><a href={%url 'homeapp:detaildata' data.slug %}>{{data.title}}</a></h4>
                    <small class='text-muted'><b>Author: </b>{{data.created_by}}<br>
                     <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br><br>
@@ -96,7 +96,7 @@
                 {%for data in data%}
                                
                                     
-                <a href={%url 'homeapp:detaildata' data.id%}> {{data.title | truncatechars:50}}</a><br><br>
+                <a href={%url 'homeapp:detaildata' data.slug%}> {{data.title | truncatechars:50}}</a><br><br>
                                     
                               
                 {%endfor%}
