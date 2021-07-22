@@ -13,7 +13,8 @@ class blogpost(models.Model):
     likes=models.ManyToManyField(User, related_name='blog_posts')
     date=models.DateTimeField(auto_now_add=True )
 
-
+    class Meta:
+        ordering=['-date']
     
     def __str__(self):
         return ' (' +str(self.created_by)+') Title- '+self.title
@@ -21,8 +22,7 @@ class blogpost(models.Model):
     def get_absolute_url(self):
         return reverse('homeapp:detaildata', args=[str(self.id)])
     
-    class Meta:
-        ordering=['-date']
+    
     
     
 

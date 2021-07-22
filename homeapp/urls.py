@@ -4,7 +4,6 @@ from .import views
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from blog.models import blogpost
-from .sitemaps import Blogpost_Sitemap
 
 app_name='homeapp'
 
