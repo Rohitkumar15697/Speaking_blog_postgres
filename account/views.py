@@ -41,7 +41,7 @@ def loginme(request):
         if user is not None:
             login(request,user)
             print('Your are logged in')
-            return redirect('/blog/profile/')
+            return redirect('homeapp:home')
         else:
             messages.error(request,'Incorrect username or password!')
 
