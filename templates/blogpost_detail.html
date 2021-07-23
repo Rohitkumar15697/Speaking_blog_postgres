@@ -22,7 +22,7 @@
         <div class='row'>
         
 
-        <div class='col-md-10 '>
+        <div class='col-md-9 '>
             <h2>{{data.title}}</h2>
             <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
             
@@ -53,7 +53,7 @@
         
         
         
-                <hr>
+                <hr><br>
                 <!--Blog Like section-->
                 
                 {%if user.is_authenticated%}        
@@ -88,14 +88,17 @@
                                 <a href={%url 'homeapp:deleteblog' data.slug%} class='text-danger'>Delete</a>
 
                     {%endif%}
-                {%endif%}
+                {%endif%}<br><br><hr>
 
         </div>
 
 
-        <!--google adsense ads-->
-        <div class='col-md-2'>
-            
+        
+        <div class='col-md-3'>
+            <strong>See also</strong><br>
+            {%for titles in titles%}
+                <a href={%url 'homeapp:article' titles.slug%}>{{titles.title}}</a><br><br>
+            {%endfor%}
         </div>
 
         </div>

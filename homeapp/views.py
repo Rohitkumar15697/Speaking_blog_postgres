@@ -60,6 +60,14 @@ class DetailData(DetailView):
     model=blogpost
     template_name='blogpost_detail.html'
     context_object_name='data'
+    extra_context={'titles':blogpost.objects.all()}
+
+    #or we can pass context variable using this method also
+    #def get_context_data(self,*args, **kwargs):
+    #    context=super(DetailData,self).get_context_data(*args,**kwargs)
+    #    context['titles']=blogpost.objects.all()[:6]
+    #    return context
+
 
 
 '''
