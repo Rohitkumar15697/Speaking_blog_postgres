@@ -20,9 +20,9 @@ def index(request):
     topic_names=blogpost.objects.values_list('topic',flat=True).distinct() 
 
     blog_data=postdata[:3]
+    context={'data':postdata,'blog_data':blog_data,'topics':topic_names,'count':count}
     
-    
-    return render(request,'index.html',{'data':postdata,'blog_data':blog_data,'topics':topic_names,'count':count})
+    return render(request,'index.html',context)
 
 
 def about(request):
