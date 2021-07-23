@@ -22,91 +22,91 @@
         <div class='row'>
         
 
-        <div class='col-md-10 '>
-        <h2>{{data.title}}</h2>
-        <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
-        
-        <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
+        <div class='col-md-8 '>
+            <h2>{{data.title}}</h2>
+            <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
+            
+            <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
 
-        <!--Printing date of created-->
-        <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small>
+            <!--Printing date of created-->
+            <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small>
 
-        
-               
-            <div>   
-               <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p>
-            </div> 
-
-            <div>
-                <h4>{{data.heading1}}</h4>
-                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post1 | linebreaks}}</p>
-            </div>
-            <div>
-                <h4>{{data.heading2}}</h4>
-                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post2 | linebreaks}}</p>
-            </div> 
-
-            <div>
-                <h4>{{data.heading3}}</h4>
-                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post3 | linebreaks}}</p>
-            </div>  
-        
-        
-        
-        <hr>
-        <!--Blog Like section-->
-        
-        {%if user.is_authenticated%}        
-                        <form method='post' action="{%url 'homeapp:like_post' data.slug %}" class='form-group'>
-                                                    
-                            {%csrf_token%}
-
-                            {%if user in data.likes.all%}
-                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-danger  btn-sm'>Unlike</button>
-                            {%else%}
-                                <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-primary btn-sm'>Like</button>
-                            {%endif%}
-
-                        </form>
-            {%else%}
-                <small>{{data.likes.count}} Likes</small>
+            
                 
-                        
-        {%endif%}  
+                <div>   
+                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p>
+                </div> 
 
-    <br>    
+                <div>
+                    <h4>{{data.heading1}}</h4>
+                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post1 | linebreaks}}</p>
+                </div>
+                <div>
+                    <h4>{{data.heading2}}</h4>
+                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post2 | linebreaks}}</p>
+                </div> 
 
-
-        <!--This is for delete and edit post in blogpost_detail page only-->
-
+                <div>
+                    <h4>{{data.heading3}}</h4>
+                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post3 | linebreaks}}</p>
+                </div>  
         
-        {% if user.is_authenticated %}
-            {%if user.id == data.created_by.id %}
+        
+        
+                <hr>
+                <!--Blog Like section-->
+                
+                {%if user.is_authenticated%}        
+                                <form method='post' action="{%url 'homeapp:like_post' data.slug %}" class='form-group'>
+                                                            
+                                    {%csrf_token%}
 
-                        <a href={%url 'homeapp:editblog' data.slug %}>Edit</a>&nbsp;&nbsp;&nbsp;
+                                    {%if user in data.likes.all%}
+                                        <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-danger  btn-sm'>Unlike</button>
+                                    {%else%}
+                                        <small>{{data.likes.count}} Likes</small> <button type='submit' name='like' value="{{data.slug}}" class='btn btn-primary btn-sm'>Like</button>
+                                    {%endif%}
 
-                        <a href={%url 'homeapp:deleteblog' data.slug%} class='text-danger'>Delete</a>
+                                </form>
+                    {%else%}
+                        <small>{{data.likes.count}} Likes</small>
+                        
+                                
+                {%endif%}  
 
-            {%endif%}
-        {%endif%}
+            <br>    
+
+
+                <!--This is for delete and edit post in blogpost_detail page only-->
+
+                
+                {% if user.is_authenticated %}
+                    {%if user.id == data.created_by.id %}
+
+                                <a href={%url 'homeapp:editblog' data.slug %}>Edit</a>&nbsp;&nbsp;&nbsp;
+
+                                <a href={%url 'homeapp:deleteblog' data.slug%} class='text-danger'>Delete</a>
+
+                    {%endif%}
+                {%endif%}
 
         </div>
 
 
         <!--google adsense ads-->
-        <div class='col-md-2'>
+        <div class='col-md-4'>
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5962240393273120"
-     crossorigin="anonymous"></script>
-<!-- first ever add -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5962240393273120"
-     data-ad-slot="9789871018"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+             crossorigin="anonymous"></script>
+            <!-- first ever add -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-5962240393273120"
+            data-ad-slot="9789871018"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
         </div>
