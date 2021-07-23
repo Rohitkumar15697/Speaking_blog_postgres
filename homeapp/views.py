@@ -111,7 +111,7 @@ def like_post(request, slug):
         post.likes.add(request.user)
         
     
-    return redirect('homeapp:detaildata',slug)
+    return redirect('homeapp:article',slug)
 
 
 def comment_view(request, slug):
@@ -125,7 +125,7 @@ def comment_view(request, slug):
         obj.name=name
         obj.post=post
         obj.save()
-        return HttpResponseRedirect(reverse('homeapp:detaildata',args=[slug]))
+        return HttpResponseRedirect(reverse('homeapp:article',args=[slug]))
     
 
 

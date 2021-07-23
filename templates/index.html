@@ -79,7 +79,7 @@
         <div class='col-md-8'>                            
             {%for data in blog_data%}                          
                 <div class='container mt-5 p-2 bg-light'>    
-                    <h5><a href={%url 'homeapp:detaildata' data.slug%}> {{data.title}}</a></h5>
+                    <h5><a href={%url 'homeapp:article' data.slug%}> {{data.title}}</a></h5>
                     <small class='text-muted'>
                     <b>Posted on: </b>{{data.date}}<br>
                     <b><u>Category: </b>{{data.topic}}</u></small><br>
@@ -104,7 +104,7 @@
                 {%for data in data%}
                                     
                            
-                    <p> <a href={%url 'homeapp:detaildata' data.slug%}> {{data.title | truncatechars:50}} </a></p>
+                    <p> <a href={%url 'homeapp:article' data.slug%}> {{data.title | truncatechars:50}} </a></p>
                         
                                      
                 {%endfor%}

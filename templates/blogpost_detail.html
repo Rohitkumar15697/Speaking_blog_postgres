@@ -32,14 +32,28 @@
         <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small>
 
         
-               <br><br>
                
-               <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p><hr>
-                
-        
-        
-        
+            <div>   
+               <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p>
+            </div> 
 
+            <div>
+                <h4>{{data.heading1}}</h4>
+                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post1 | linebreaks}}</p>
+            </div>
+            <div>
+                <h4>{{data.heading2}}</h4>
+                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post2 | linebreaks}}</p>
+            </div> 
+
+            <div>
+                <h4>{{data.heading3}}</h4>
+                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post3 | linebreaks}}</p>
+            </div>  
+        
+        
+        
+        <hr>
         <!--Blog Like section-->
         
         {%if user.is_authenticated%}        
@@ -77,6 +91,9 @@
         {%endif%}
 
         </div>
+
+
+        <!--google adsense ads-->
         <div class='col-md-2'>
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5962240393273120"
      crossorigin="anonymous"></script>
@@ -110,7 +127,7 @@
 
                 {%if user.is_authenticated%}
                             <div class='col-md-6'>
-                                <form method='post' action="{%url 'homeapp:detaildata' data.slug %}/comment">
+                                <form method='post' action="{%url 'homeapp:article' data.slug %}/comment">
                                     {%csrf_token%}
                                     <div class='form-group'>
                                         

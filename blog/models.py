@@ -13,7 +13,15 @@ class blogpost(models.Model):
     title=models.CharField(max_length=250,blank=False)
     slug=models.SlugField(null=True)
     post=models.TextField()
-    likes=models.ManyToManyField(User, related_name='blog_posts')
+    #more other headings and their text which can only be added from admin pannel
+    heading1=models.CharField(max_length=250,blank=True)
+    post1=models.TextField(blank=True)
+    heading2=models.CharField(max_length=250,blank=True)
+    post2=models.TextField(blank=True)
+    heading3=models.CharField(max_length=250,blank=True)
+    post3=models.TextField(blank=True)
+
+    likes=models.ManyToManyField(User, related_name='blog_posts',blank=True)
     date=models.DateTimeField(auto_now_add=True )
 
     class Meta:
@@ -23,7 +31,7 @@ class blogpost(models.Model):
         return ' (' +str(self.created_by)+') Title- '+self.title
     
     def get_absolute_url(self):
-        return reverse('homeapp:detaildata', kwargs={'slug':self.slug})
+        return reverse('homeapp:article', kwargs={'slug':self.slug})
     
 def create_slug(instance, new_slug=None):
     slug=slugify(instance.title)
