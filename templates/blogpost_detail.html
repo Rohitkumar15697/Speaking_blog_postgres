@@ -97,7 +97,7 @@
         <div class='col-md-3'>
             <strong>See also</strong><br>
             {%for titles in titles%}
-                <a href={%url 'homeapp:article' titles.slug%}>{{titles.title}}</a><br><br>
+                <a href={%url 'homeapp:article' titles.slug%}>{{titles.title | truncatechars:50}}</a><br><br>
             {%endfor%}
         </div>
 
