@@ -5,7 +5,7 @@ from blog.models import blogpost,CommentModel
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,DeleteView,UpdateView
 from django.urls import reverse_lazy,reverse
-
+from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Q
@@ -50,7 +50,7 @@ class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
     def get_queryset(self):
-        return blogpost.objects.all()
+        return blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
 
 
 
@@ -60,13 +60,12 @@ class DetailData(DetailView):
     model=blogpost
     template_name='blogpost_detail.html'
     context_object_name='data'
-    extra_context={'titles':blogpost.objects.all()}
 
-    #or we can pass context variable using this method also
-    #def get_context_data(self,*args, **kwargs):
-    #    context=super(DetailData,self).get_context_data(*args,**kwargs)
-    #    context['titles']=blogpost.objects.all()[:6]
-    #    return context
+    #Getting the title links on the detail view or article page
+    def get_context_data(self,*args, **kwargs):
+        context=super(DetailData,self).get_context_data(*args,**kwargs)
+        context['titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')[:6]
+        return context
 
 
 

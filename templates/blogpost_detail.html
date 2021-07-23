@@ -99,6 +99,8 @@
             {%for titles in titles%}
                 <a href={%url 'homeapp:article' titles.slug%}>{{titles.title | truncatechars:50}}</a><br><br>
             {%endfor%}
+        
+            <u><a  href={%url 'homeapp:listdata' %} class='text-info'>See all</a></u>
         </div>
 
         </div>
