@@ -15,11 +15,10 @@
 
 
     <div class='container'>
-        {%if data%}
-        <p class='h2'>All blogs ({{data.count}})</p><br>
+        <p class='h2'>All blogs ({{blogpost_list.count}})</p><br>
+            {%if blogpost_list%}
             
-            
-                {%for data in data%}
+                {%for data in blogpost_list%}
 
               
                     
@@ -29,15 +28,13 @@
                     <small class='text-muted'> <b> Category: </b>{{data.topic}}</small></p>   
 
                 {%endfor%}
-        {%else%}
-            <h4>No blogs are available</h4>
 
-        {%endif%}      
+              
 
 
 
 
-            
+            {%endif%}
         </div><br>
  
 

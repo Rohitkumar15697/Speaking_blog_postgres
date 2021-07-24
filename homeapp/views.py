@@ -1,4 +1,3 @@
-from typing import List
 from blog.forms import Myblogform
 from django.shortcuts import redirect, render,render,HttpResponse,get_object_or_404
 from django.http import HttpResponseRedirect
@@ -51,11 +50,9 @@ def search_result(request):
 
 class ListData(ListView):
     model=blogpost
-    context_object_name='data'
     template_name='blogpost_list.html'
-
-
-
+    def get_queryset(self):
+        return blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
 
 
 
@@ -66,11 +63,11 @@ class DetailData(DetailView):
     template_name='blogpost_detail.html'
     context_object_name='data'
 
-    def get_context_data(self, **kwargs):
-        context= super(DetailData,self).get_context_data(**kwargs)
-        context['list_titles']=blogpost.objects.annotate(likes_count=Count('likes')).order_by('-likes_count')[:6]
+    #Getting the title links on the detail view or article page
+    def get_context_data(self,*args, **kwargs):
+        context=super(DetailData,self).get_context_data(*args,**kwargs)
+        context['titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')[:6]
         return context
-
 
 
 
