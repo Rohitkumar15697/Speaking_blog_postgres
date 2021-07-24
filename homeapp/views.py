@@ -66,7 +66,7 @@ class DetailData(DetailView):
     #Getting the title links on the detail view or article page
     def get_context_data(self,*args, **kwargs):
         context=super(DetailData,self).get_context_data(*args,**kwargs)
-        context['titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
+        context['list_titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
         return context
 
 
