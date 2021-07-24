@@ -5,6 +5,8 @@ from blog.models import blogpost,CommentModel
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,DeleteView,UpdateView
 from django.urls import reverse_lazy,reverse
+
+#for counting the number of likes 
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -49,8 +51,15 @@ def search_result(request):
 class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
+
+    def get_context_data(self,*args, **kwargs):
+        context=super(ListData,self).get_context_data(**kwargs)
+        context['blogpost_list']=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
+        return context
+
     def get_queryset(self):
-        return blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
+        queryset=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
+        return queryset
 
 
 
