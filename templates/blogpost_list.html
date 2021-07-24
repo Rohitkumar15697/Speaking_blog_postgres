@@ -18,14 +18,14 @@
         <p class='h2'>All blogs ({{blogpost_list.count}})</p><br>
             
             
-                {%for data in blogpost_list%}
+                {%for result in blogpost_list%}
 
               
                     
 
-                    <p ><a href={%url 'homeapp:article' data.slug %}>{{data.title}}</a>
-                    <small class='text-muted'> <b> Author: </b>{{data.created_by}} </small><br>
-                    <small class='text-muted'> <b> Category: </b>{{data.topic}}</small></p>   
+                    <p ><a href={%url 'homeapp:article' result.slug %}>{{result.title}}</a>
+                    <small class='text-muted'> <b> Author: </b>{{result.created_by}} </small><br>
+                    <small class='text-muted'> <b> Category: </b>{{result.topic}}</small></p>   
 
                 {%endfor%}
 
