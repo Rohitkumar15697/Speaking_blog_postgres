@@ -53,6 +53,10 @@ class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
     context_object_name='data'
+    def get_queryset(self):
+        context= super().get_queryset()
+        context=context.order_by('likes')
+        return context
 
 
 
