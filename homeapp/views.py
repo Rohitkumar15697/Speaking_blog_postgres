@@ -66,6 +66,11 @@ class DetailData(DetailView):
     template_name='blogpost_detail.html'
     context_object_name='data'
 
+    def get_context_data(self, **kwargs):
+        context= super(DetailData,self).get_context_data(**kwargs)
+        context['list_titles']=blogpost.objects.annotate(likes_count=Count('likes')).order_by('-likes_count')
+        return context
+
 
 
 
