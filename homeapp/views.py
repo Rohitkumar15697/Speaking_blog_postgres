@@ -53,13 +53,10 @@ class ListData(ListView):
     template_name='blogpost_list.html'
 
     def get_context_data(self,*args, **kwargs):
-        context=super(ListData,self).get_context_data(**kwargs)
-        context['blogpost_list']=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
+        context=super(ListData,self).get_context_data(*args,**kwargs)
+        context['blogpost_list']=blogpost.objects.all().annotate(Count('likes')).order_by('likes')
         return context
 
-    def get_queryset(self):
-        queryset=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
-        return queryset
 
 
 
@@ -73,7 +70,7 @@ class DetailData(DetailView):
     #Getting the title links on the detail view or article page
     def get_context_data(self,*args, **kwargs):
         context=super(DetailData,self).get_context_data(*args,**kwargs)
-        context['titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')[:6]
+        context['titles']=blogpost.objects.all().annotate(Count('likes')).order_by('likes')[:6]
         return context
 
 
