@@ -1,3 +1,4 @@
+from typing import List
 from blog.forms import Myblogform
 from django.shortcuts import redirect, render,render,HttpResponse,get_object_or_404
 from django.http import HttpResponseRedirect
@@ -51,8 +52,11 @@ def search_result(request):
 class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
-    context_object_name='blogpost_list'
-    
+    context_object_name='data'
+    def get_queryset(self):
+        context= super(ListData,self).get_queryset()
+        context=context.order_by('likes')
+        return context
 
 
 
