@@ -15,7 +15,7 @@
 
 
     <div class='container'>
-        <p class='h2'>All blogs ({{blogpost_list.count}})</p><br>
+        <p class='h2'>List of all blogs</p><br>
             {%if blogpost_list%}
             
                 {%for data in blogpost_list%}
@@ -29,12 +29,25 @@
 
                 {%endfor%}
 
-              
+      {%endif%}
 
+        <!--Pagination for all blogs in list view page-->
+      {% if is_paginated %}
+        <nav aria-label="Page navigation conatiner">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
+                {% endif %}
+            </ul>
+        </nav>
+       &laquo;&laquo; <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% endif %}
+        
 
-
-            {%endif%}
         </div><br>
  
 
