@@ -15,6 +15,7 @@
 
 
     <div class='container'>
+        {%if data%}
         <p class='h2'>All blogs ({{data.count}})</p><br>
             
             
@@ -28,8 +29,10 @@
                     <small class='text-muted'> <b> Category: </b>{{data.topic}}</small></p>   
 
                 {%endfor%}
+        {%else%}
+            <h4>No blogs are available</h4>
 
-              
+        {%endif%}      
 
 
 

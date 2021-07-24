@@ -8,7 +8,7 @@ from django.views.generic import ListView,DetailView,DeleteView,UpdateView
 from django.urls import reverse_lazy,reverse
 
 #for counting the number of likes 
-from django.db.models import Count
+from django.db.models import Count, query
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Q
@@ -51,8 +51,9 @@ def search_result(request):
 
 class ListData(ListView):
     model=blogpost
-    template_name='blogpost_list.html'
     context_object_name='data'
+    queryset=blogpost.objects.all().order_by('likes')
+    template_name='blogpost_list.html'
 
 
 
