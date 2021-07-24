@@ -51,8 +51,10 @@ def search_result(request):
 class ListData(ListView):
     model=blogpost
     template_name='blogpost_list.html'
-    def get_queryset(self):
-        return blogpost.objects.annotate(like_count=Count('likes')).order_by('likes')
+    def get_queryset(self,*args,**kwargs):
+        context= super(ListData,self).get_queryset(*args,**kwargs)
+        context=blogpost.objects.annotate(like_count=Count('likes')).order_by('-like_count')
+        return context
 
 
 
