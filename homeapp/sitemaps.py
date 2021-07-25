@@ -1,6 +1,5 @@
-import homeapp
 from django.contrib.sitemaps import Sitemap
-from .models import blogpost
+from blog.models import blogpost
 
 class StaticPages(Sitemap):
     changefreq='daily'
