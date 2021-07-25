@@ -19,6 +19,7 @@ from django.urls import path,include
 from django.contrib.sitemaps.views import sitemap
 from homeapp import sitemaps
 from homeapp.sitemaps import BlogpostSitemap
+from django.views.generic import TemplateView   #This is for robots.txt
 
 sitemaps={'blogpost':BlogpostSitemap}
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('superadmin/', admin.site.urls),
     path('',include('homeapp.urls')), 
     path('sitemap.xml', sitemap, {'sitemaps':sitemaps}),
+    path('robots.txt',TemplateView.as_view(template_name='robots.txt',content_type='text/plain')),
     path('account/',include('account.urls')),
     path('blog/',include('blog.urls')),
 ]
