@@ -13,6 +13,7 @@ urlpatterns = [
     
     path('',views.index,name='home'),
     path('about', views.about, name='about'),
+    path('privacy-policy', views.privacy_policy,name='privacypolicy'),
     path('search/',views.search_result,name='search'),
     path('listdata/',views.ListData.as_view(),name='listdata'),
     path('article/<slug:slug>',views.DetailData.as_view(),name='article'),
