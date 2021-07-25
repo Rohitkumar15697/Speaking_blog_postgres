@@ -7,8 +7,7 @@
 
     {%block style%}
        
-        .postdata{ overflow: auto;
-                    justify-content: space-between;}
+        .postdata{text-align: justify; word-wrap:break-word;}
       
        .dot{        
                 border-radius:50%;
@@ -43,21 +42,21 @@
             
                 
                 <div>   
-                <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post | linebreaks}}</p>
+                <p class='fs-5 fw-light'>{{data.post | linebreaks}}</p>
                 </div> 
 
                 <div>
                     <h4>{{data.heading1}}</h4>
-                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post1 | linebreaks}}</p>
+                    <p class='fs-5 fw-light' > {{data.post1 | linebreaks}}</p>
                 </div>
                 <div>
                     <h4>{{data.heading2}}</h4>
-                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post2 | linebreaks}}</p>
+                    <p class='fs-5 fw-light' > {{data.post2 | linebreaks}}</p>
                 </div> 
 
                 <div>
                     <h4>{{data.heading3}}</h4>
-                    <p class='fs-5 fw-light' style="text-align:justify;"> {{data.post3 | linebreaks}}</p>
+                    <p class='fs-5 fw-light'> {{data.post3 | linebreaks}}</p>
                 </div>  
         
         
