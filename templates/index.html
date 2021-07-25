@@ -11,7 +11,7 @@
     .carousel-item:hover{transform:scale(0.98);}
     .ropic img{transition:transform 1s;}
     .ropic img:hover{transform:scale(0.9);}
-        
+    .postdata{word-wrap:break-word;}  
     
     @media screen and (max-width:700px){
         .carousel-inner{height:65vh;}
@@ -78,7 +78,7 @@
         {%if blog_data%}
         <div class='col-md-8'>                            
             {%for data in blog_data%}                          
-                <div class='container mt-5 p-2 bg-light'>    
+                <div class='container mt-5 p-2 bg-light postdata'>    
                     <h5><a href={%url 'homeapp:article' data.slug%}> {{data.title}}</a></h5>
                     <small class='text-muted'>
                     <b>Posted on: </b>{{data.date}}<br>
