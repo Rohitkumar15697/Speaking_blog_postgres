@@ -23,4 +23,5 @@ urlpatterns = [
     path('like/<slug:slug>', views.like_post, name='like_post'),
     path('article/<slug:slug>/comment', views.comment_view, name='comment'),
 
+
 ]

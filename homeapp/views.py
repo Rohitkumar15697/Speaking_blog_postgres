@@ -139,6 +139,7 @@ def comment_view(request, slug):
         obj.save()
         return HttpResponseRedirect(reverse('homeapp:article',args=[slug]))
     
+#Delete comment
 
 
 
