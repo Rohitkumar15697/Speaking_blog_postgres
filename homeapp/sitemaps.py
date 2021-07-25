@@ -6,9 +6,8 @@ class StaticPages(Sitemap):
     changefreq='daily'
     priority=0.5
     def items(self):
-        return ['home','about']
-    def location(self, item):
-        return reverse(item)
+        return ['about']
+
 
 class BlogpostSitemap(Sitemap):
     changefreq='never'
