@@ -1,2 +1,3 @@
 User-agent: *
 Disallowed: /superadmin/
+Sitemap: http://www.speaksera.co.in/sitemap.xml
