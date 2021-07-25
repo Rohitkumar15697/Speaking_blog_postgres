@@ -7,7 +7,8 @@ class StaticPages(Sitemap):
     priority=0.5
     def items(self):
         return ['about']
-
+    def location(self, item):
+        return reverse(item)
 
 class BlogpostSitemap(Sitemap):
     changefreq='never'
