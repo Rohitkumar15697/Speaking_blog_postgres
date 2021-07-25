@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path,include
 from django.contrib.sitemaps.views import sitemap
 from homeapp import sitemaps
-from homeapp.sitemaps import BlogpostSitemap, StaticPages
+from homeapp.sitemaps import BlogpostSitemap
 
-sitemaps={'blogpost':BlogpostSitemap,'static':StaticPages}
+sitemaps={'blogpost':BlogpostSitemap}
 
 
 
