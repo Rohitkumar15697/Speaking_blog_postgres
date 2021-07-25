@@ -35,8 +35,8 @@ def add_blog(request):
         fm=Myblogform(request.POST)
         if fm.is_valid():
             topic=fm.cleaned_data['topic']
-            title=fm.cleaned_data['title'].capitalize()
-            post=fm.cleaned_data['post'].capitalize()
+            title=fm.cleaned_data['title']
+            post=fm.cleaned_data['post']
             obj=blogpost(topic=topic,title=title,post=post)
     
             obj.created_by=request.user  #this line fill the created_by column in models by current username automatically
