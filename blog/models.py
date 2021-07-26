@@ -11,7 +11,7 @@ class blogpost(models.Model):
     created_by=models.ForeignKey(User,on_delete=models.CASCADE)
     topic=models.CharField(max_length=122,null=False)
     title=models.TextField(blank=False)
-    slug=models.SlugField(null=True)
+    slug=models.SlugField(max_length=250,null=True)
     post=models.TextField()
     #more other headings and their text which can only be added from admin pannel
     heading1=models.CharField(max_length=250,blank=True)
