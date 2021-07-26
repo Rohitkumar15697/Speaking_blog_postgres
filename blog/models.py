@@ -10,7 +10,7 @@ class blogpost(models.Model):
    
     created_by=models.ForeignKey(User,on_delete=models.CASCADE)
     topic=models.CharField(max_length=122,null=False)
-    title=models.CharField(max_length=250,blank=False)
+    title=models.TextField(blank=False)
     slug=models.SlugField(null=True)
     post=models.TextField()
     #more other headings and their text which can only be added from admin pannel
@@ -28,7 +28,7 @@ class blogpost(models.Model):
         ordering=['-date']
     
     def __str__(self):
-        return ' (' +str(self.created_by)+') Title- '+self.title
+        return ' (' +str(self.created_by)+') Title- '+self.title[:30]
     
     def get_absolute_url(self):
         return reverse('homeapp:article', kwargs={'slug':self.slug})
@@ -64,7 +64,7 @@ class CommentModel(models.Model):
         ordering=['-date_added']
     
     def __str__(self):
-        return '%s - %s' %(self.post.title, self.name)
+        return '%s - %s' %(self.post.title[:30], self.name)
 
     
 
