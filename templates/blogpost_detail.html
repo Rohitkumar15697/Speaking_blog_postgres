@@ -1,13 +1,15 @@
 {%extends 'base.html' %}
 
     {%block head%} 
-        <meta name='description' content={{data.post | truncatechars:150}}>
+        <meta name='description' content="{{data.post | truncatechars:150}} | speaksera">
      {%endblock%}
-    {%block title%} {{data.title}} {%endblock%}
+    {%block title%} {{data.title}} | speaksera {%endblock%}
 
     {%block style%}
        
         .postdata{text-align: justify; word-wrap:break-word;}
+
+        .postdata h1{color:rgb(115, 132, 167)}
       
        .dot{        
                 border-radius:50%;
@@ -26,12 +28,12 @@
 
 
 
-    <div class='container'>
+    <div class='container-fluid bg-light'>
         <div class='row'>
         
 
         <div class='col-md-9 postdata'>
-            <h2>{{data.title}}</h2>
+            <h1>{{data.title}} | speaksera</h1>
             <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
             
             <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
@@ -44,7 +46,7 @@
                 <div>   
                 <p class='fs-5 fw-light'>{{data.post|safe | linebreaks}}</p>
                 </div> 
-                
+
                 <hr><br>
                 <!--Blog Like section-->
                 
