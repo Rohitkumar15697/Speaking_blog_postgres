@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class blogpost(models.Model):
@@ -12,15 +13,9 @@ class blogpost(models.Model):
     topic=models.CharField(max_length=122,null=False)
     title=models.TextField(blank=False)
     slug=models.SlugField(max_length=250,null=True)
-    post=models.TextField()
+    post=RichTextField(blank=True, null=True)
+    #post=models.TextField()
     #more other headings and their text which can only be added from admin pannel
-    heading1=models.CharField(max_length=250,blank=True)
-    post1=models.TextField(blank=True)
-    heading2=models.CharField(max_length=250,blank=True)
-    post2=models.TextField(blank=True)
-    heading3=models.CharField(max_length=250,blank=True)
-    post3=models.TextField(blank=True)
-
     likes=models.ManyToManyField(User, related_name='blog_posts',blank=True)
     date=models.DateTimeField(auto_now_add=True )
 
