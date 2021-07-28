@@ -10,18 +10,19 @@
 
                     
                         <!--This is the form for blog post-->
-
+                        <div class='table-responsive'>
                         <form method='post' class='form-group'>
 
                             {%csrf_token%}
-
-                                    {{form.media}}
+                            
+                                {{form.media}}
                                  {{form.as_p}}
-
+                            
 
                                 <input type='submit' class='btn btn-primary' value='Post'>
 
                             </form>
+                            </div>
             </div><br><br><br><br>
 
 {%endblock%}
