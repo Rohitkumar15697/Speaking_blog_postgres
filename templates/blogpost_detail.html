@@ -10,15 +10,20 @@
         .postdata{text-align:justify; 
             justify-content:space-between;
                     }
+        
 
         .postdata h1{color:rgb(115, 132, 167)}
-
+      
+        .comment_section{display:flex;}
       /**This is the front of comment user image like circle**/
        .dot{        
+                width:40px;
                 border-radius:50%;
+                text-align:center;
                 font-size:25px;
                 color:rgb(255, 250, 250);
                 background:rgb(199, 199, 199);}
+        .dotdata{margin-top:6px;margin-left:5px;}
 
         .btn-sm{font-size:12px;}
     {%endblock%}
@@ -147,11 +152,17 @@
                         <!--print all comments to template-->
                         {%for comment in data.comments.all %}
                         <div class='comment_section my-4'>
-                            <span class='dot mx-3 pb-2 p-1'> &nbsp; {{ comment.name|make_list|first|title }}&nbsp; </span>    
-                            <strong class='text-info '>{{comment.name}}</strong> -
-                                <span class='text-muted'>{{comment.date_added}}</span><br>
-                            <p style="margin-left:80px;">{{comment.body}}</p>
+                            <div class='dot'>
+                             {{ comment.name|make_list|first|title }}
+                            </div>
+                            <div class='dotdata'>
+                                <strong class='text-info '>{{comment.name}}</strong> -
+                                <span class='text-muted'>{{comment.date_added}}</span>
+                                
+                            </div>
+                            
                         </div>
+                        <p style="margin-left:40px;">{{comment.body}}</p>
                             
 <hr>
                         {%endfor%}
