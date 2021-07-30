@@ -16,8 +16,9 @@ def register(request):
         print(useremail)
 
         #Sending Thank you E-mail
-        email_subject="From SpeakingBlog"
-        email_message=f"Thank you {username} for creating account in 'www.speaksera.co.in'. Now go to login (https://speakingblog.herokuapp.com/account/login/) and enjoy with your account. "                
+        email_subject="Thank You From Speaksera"
+        email_message=f"""Thank you {username} for creating account in 'www.speaksera.co.in'. Now go to login (https://speaksera.co.in/account/login/) and enjoy with your account.
+         Note: This is auto generated mail so please don't reply."""                
         email_from=settings.EMAIL_HOST_USER
         email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
         send_mail(email_subject,email_message,email_from,email_to, fail_silently=False)
