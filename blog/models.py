@@ -67,7 +67,7 @@ class CommentModel(models.Model):
 #User Profile detail
 
 class ProfileModel(models.Model):
-    profile_name=models.ForeignKey(User, on_delete=models.CASCADE)
+    profile_name=models.OneToOneField(User, on_delete=models.CASCADE)
     full_name=models.CharField(max_length=200,blank=True,null=True)
     profile_picture= models.ImageField(upload_to='images/profile_pictures', blank=True, null=True)
     bio=models.TextField(blank=True,null=True)
