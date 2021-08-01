@@ -68,9 +68,9 @@ class CommentModel(models.Model):
 
 class ProfileModel(models.Model):
     profile_name=models.ForeignKey(User, on_delete=models.CASCADE)
-    full_name=models.CharField(max_length=200)
+    full_name=models.CharField(max_length=200,blank=True,null=True)
     profile_picture= models.ImageField(upload_to='images/profile_pictures', blank=True, null=True)
-    bio=models.TextField()
-    facebook_url=models.CharField(max_length=200)
-    instagram_url=models.CharField(max_length=200)
+    bio=models.TextField(blank=True,null=True)
+    facebook_url=models.CharField(max_length=200,blank=True,null=True)
+    instagram_url=models.CharField(max_length=200,blank=True,null=True)
 
