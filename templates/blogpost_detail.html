@@ -23,7 +23,7 @@
                 font-size:23px;
                 color:rgb(255, 250, 250);
                 background:rgb(199, 199, 199);}
-        .dotdata{margin-top:4px;margin-left:5px;}
+        .dotdata{margin-top:2px;margin-left:5px;}
 
         .btn-sm{font-size:12px;}
     {%endblock%}
@@ -35,25 +35,24 @@
 
 
 
-
+    <!--Showing detail data on the template-->
     <div class='container-fluid bg-light'>
         <div class='row'>
         
 
         <div class='col-md-9 postdata'>
             <h1>{{data.title}} | speaksera</h1>
-            <small class='text-muted'><b>Author</b>- {{data.created_by}}</small><br>
-            
-            <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
-
+            <small class='text-muted'><b>Author</b></small></b>
+            <a href="#"><small class='text-info'>- {{data.created_by}}</small></a>
+            <br>
             <!--Printing date of created-->
-            <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small>
-
-            
-                
-                <div>   
-                <p class='fs-5 fw-light'>{{data.post|safe | linebreaks}}</p>
-                </div> 
+            <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
+            <!--topic of the blog--> 
+            <small class='text-muted'><u><b>Category: </b>{{data.topic}}</u></small> 
+            <!--actual blog post text, safe is used for ckeditor-->
+            <div>   
+                <p class='fs-5 fw-light'>{{data.post | safe | linebreaks}}</p>
+            </div> 
 
                 <hr><br>
                 <!--Blog Like section-->
@@ -155,8 +154,9 @@
                             <div class='dot'>
                              {{ comment.name|make_list|first|title }}
                             </div>
+                            <!--comment-by user name-->
                             <div class='dotdata'>
-                                <strong class='text-info '>{{comment.name}}</strong> -
+                                <strong class='text-info '><a href="#">{{comment.name}}</a></strong> -
                                 <span class='text-muted'>{{comment.date_added}}</span>
                                 
                             </div>

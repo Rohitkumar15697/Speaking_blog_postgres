@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import blogpost
+from .models import blogpost,ProfileModel
 from django.views.generic import DeleteView
 
 from .forms import Myblogform
@@ -16,7 +16,7 @@ def profile(request):
     count=0
 
     postdata=blogpost.objects.all().filter(created_by=request.user)
-    print(list(postdata))
+    #print(list(postdata))
     
     count=len(postdata)
     
@@ -24,7 +24,11 @@ def profile(request):
 
     postdata=postdata[:8]  #Pring total 15 blogs title from first blog
 
-    return render(request,'profile.html' ,{'data':postdata,'fulldata':fulldata,'count':count})
+    #Accessing profile detail from ProfileModel of user
+    
+    profile_detail=ProfileModel.objects.all().filter(profile_name=request.user)
+
+    return render(request,'profile.html' ,{'data':postdata,'fulldata':fulldata,'count':count,"profile_detail":profile_detail})
 
 
 

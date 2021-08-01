@@ -34,3 +34,9 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     
 ]
+
+#For accessing media files on admin pannel like open image in full size after clicking on it
+
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

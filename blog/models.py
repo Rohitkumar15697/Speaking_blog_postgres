@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import related
 from django.urls import reverse
 
 from django.db.models.signals import pre_save
@@ -9,7 +10,7 @@ from ckeditor.fields import RichTextField
 
 class blogpost(models.Model):
    
-    created_by=models.ForeignKey(User,on_delete=models.CASCADE)
+    created_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name='bloguser')
     topic=models.CharField(max_length=122,null=False)
     title=models.TextField(blank=False)
     slug=models.SlugField(max_length=250,null=True)
@@ -50,7 +51,7 @@ pre_save.connect(pre_save_blog_reciever,sender=blogpost)
 
 class CommentModel(models.Model):
     post = models.ForeignKey(blogpost ,related_name='comments', on_delete=models.CASCADE)
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.ForeignKey(User,related_name='userdetail', on_delete=models.CASCADE)
     body = models.TextField()
     comment_likes=models.ManyToManyField(User, related_name='comment_post')
     date_added = models.DateTimeField(auto_now_add=True)
@@ -61,11 +62,15 @@ class CommentModel(models.Model):
     def __str__(self):
         return '%s - %s' %(self.post.title[:30], self.name)
 
-    
-
-
-
 
 
 #User Profile detail
-#class ProfileModel(models.Model):
+
+class ProfileModel(models.Model):
+    profile_name=models.ForeignKey(User, on_delete=models.CASCADE)
+    full_name=models.CharField(max_length=200)
+    profile_picture= models.ImageField(upload_to='images/profile_pictures', blank=True, null=True)
+    bio=models.TextField()
+    facebook_url=models.CharField(max_length=200)
+    instagram_url=models.CharField(max_length=200)
+

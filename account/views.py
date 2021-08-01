@@ -13,14 +13,14 @@ def register(request):
         fm=createuser(request.POST)
         useremail=request.POST['email']
         username=request.POST['username']
-        print(useremail)
 
         #Sending Thank you E-mail
         email_subject="Thank You From Speaksera"
         email_body=f"""
         Thank you {username} for creating account in 'www.speaksera.co.in'.
         Now go to login and enjoy with your account.
-        Note: This is auto generated mail so please don't reply."""    
+        Note: This is auto generated mail so please don't reply.
+        """    
 
         email_from=settings.EMAIL_HOST_USER
         email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
@@ -51,3 +51,4 @@ def loginme(request):
 
     fm=loginform()
     return render(request,'login.html',{'form':fm})
+

@@ -41,7 +41,6 @@ def search_result(request):
     else:
         search_data=blogpost.objects.all().filter(Q(title__icontains=search_element) | Q(topic__istartswith=search_element))
         count=len(search_data)
-        print(search_result)
     
         return render(request,'search_result.html',{'searched':search_element,'result':search_data,'count':count})
 
@@ -71,6 +70,7 @@ class DetailData(DetailView):
     def get_context_data(self,*args, **kwargs):
         context=super(DetailData,self).get_context_data(*args,**kwargs)
         context['list_titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
+        context['userdetail']=User.objects.all()
         return context
 
 
