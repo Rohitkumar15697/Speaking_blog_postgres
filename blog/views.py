@@ -5,8 +5,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import blogpost,ProfileModel
 from django.views.generic import DeleteView
-
-from .forms import Myblogform
+from django.shortcuts import get_object_or_404
+from .forms import Myblogform, ProfileForm
 
 import random
 # Create your views here.
@@ -63,4 +63,10 @@ class DeleteAccount(DeleteView):
     success_url= reverse_lazy('home')
 
 
-
+#View for showing any user data
+def Show_User_Data(request,username):
+    user=User.objects.get(username=username)
+    data=ProfileModel.objects.get(profile_name=user.id)
+    bloglinks=blogpost.objects.all().filter(created_by=user.id)
+    args={'data':data,'bloglinks':bloglinks}
+    return render(request, 'profile_detail.html',args)

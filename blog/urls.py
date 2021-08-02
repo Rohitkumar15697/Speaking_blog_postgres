@@ -13,4 +13,7 @@ urlpatterns = [
     path('search/',search_result),
     path('delete_account/<int:pk>',views.DeleteAccount.as_view(), name='deleteaccount'),
 
+    #show user data
+    path('profiledetail/<str:username>', views.Show_User_Data, name='profiledetail'),
+
 ]

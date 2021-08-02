@@ -1,5 +1,5 @@
 from django import forms
-from .models import blogpost 
+from .models import blogpost , ProfileModel
 
 
 class Myblogform(forms.ModelForm):
@@ -13,3 +13,8 @@ class Myblogform(forms.ModelForm):
         fields=['topic','title','post']
         widgets={'title':forms.TextInput(attrs={'class':'form-control'}),'post':forms.Textarea(attrs={'class':'form-control'})}
 
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model=ProfileModel
+        fields="__all__"

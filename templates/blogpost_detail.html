@@ -156,7 +156,7 @@
                             </div>
                             <!--comment-by user name-->
                             <div class='dotdata'>
-                                <strong class='text-info '><a href="#">{{comment.name}}</a></strong> -
+                                <a href={%url "profiledetail" comment.name %}><strong class='text-info '>{{comment.name}}</strong></a> -
                                 <span class='text-muted'>{{comment.date_added}}</span>
                                 
                             </div>

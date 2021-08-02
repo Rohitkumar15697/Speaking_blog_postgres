@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{%block title%}User Detail{%endblock%}
+
+{%block style%}
+
+@media screen and (max-width:700px){
+
+.card img{height:130px;width:110px;}
+}
+
+{%endblock%}
+
+{%block body%}
+
+<div class='container'>    
+   
+   <div class="card mb-3" >
+                    <div class="row no-gutters">
+                        <div class="col-md-2">
+                            <!--if profile picture exist-->
+                            {%if data.profile_picture%}
+                                <img src={{data.profile_picture.url}} class="card-img" alt="{{data.profile_name}}profile picture" height="160">
+                            {%endif%}
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{data.full_name}}</h5>
+                            <p class="card-text">{{data.bio}}</p>
+                            {%if data.facebook_url%}
+                                <a href={{data.facebook_url}}>facebook</a>
+                            {%endif%}
+                            {%if data.instagram_url%}
+                                | <a href={{data.instagram_url}} class='text-danger'>instagram</a>
+                            {%endif%}
+                        </div>
+                        </div>
+                    </div>
+    </div>
+    <div class='allLinks'>
+        <h3>All my blogs</h3>
+        {%for data in bloglinks%}
+            <a href={%url 'homeapp:article' data.slug %}>{{data.title}}</a><br><br>
+        {%endfor%}
+
+    </div>
+
+    
+
+</div>
+{%endblock%}
