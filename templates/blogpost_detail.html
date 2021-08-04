@@ -42,8 +42,11 @@
 
         <div class='col-md-9 postdata'>
             <h1>{{data.title}} | speaksera</h1>
+            
             <small class='text-muted'><b>Author</b></small></b>
-            <a href="#"><small class='text-info'>- {{data.created_by}}</small></a>
+            
+            <a href={%url "profiledetail" data.created_by %}><small class='text-info'>- {{data.created_by}}</small></a>
+            
             <br>
             <!--Printing date of created-->
             <small class='text-muted'l><b>Posted on: </b>- {{data.date}}</small> <br>
@@ -157,7 +160,7 @@
                             <!--comment-by user name-->
                             <div class='dotdata'>
                                     
-                                        <a href={%url "profiledetail" comment.name %}><strong class='text-info '>{{comment.name}}</strong></a>-
+                                        <a href={%url "profiledetail" comment.name %}><strong>{{comment.name}}</strong></a>-
                                 
                                 <span class='text-muted'>{{comment.date_added}}</span>
                                 
