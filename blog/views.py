@@ -77,6 +77,7 @@ def add_profile_detail(request):
             facebook_url=form.cleaned_data['facebook_url']
             instagram_url=form.cleaned_data['instagram_url']
             obj=ProfileModel(full_name=full_name, profile_picture=profile_picture, bio=bio, facebook_url=facebook_url,instagram_url=instagram_url)
+            obj.profile_name=request.user
             obj.save()
             return redirect('profile')
     return render(request, 'add_profile_detail.html',{'form':form})
