@@ -70,6 +70,7 @@ class DetailData(DetailView):
     def get_context_data(self,*args, **kwargs):
         context=super(DetailData,self).get_context_data(*args,**kwargs)
         context['list_titles']=blogpost.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:6]
+        context['userdata']=ProfileModel.objects.all()
         return context
 
 

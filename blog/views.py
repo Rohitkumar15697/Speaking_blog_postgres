@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
@@ -63,10 +64,31 @@ class DeleteAccount(DeleteView):
     success_url= reverse_lazy('home')
 
 
+#Add user profile detail
+@login_required(login_url='login')
+def add_profile_detail(request):
+    form=ProfileForm()
+    if request.method=="POST":
+        form=ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            full_name=form.cleaned_data['full_name']
+            profile_picture=form.cleaned_data['profile_picture']
+            bio=form.cleaned_data['bio']
+            facebook_url=form.cleaned_data['facebook_url']
+            instagram_url=form.cleaned_data['instagram_url']
+            obj=ProfileModel(full_name=full_name, profile_picture=profile_picture, bio=bio, facebook_url=facebook_url,instagram_url=instagram_url)
+            obj.save()
+            return redirect('profile')
+    return render(request, 'add_profile_detail.html',{'form':form})
+
+
 #View for showing any user data
 def Show_User_Data(request,username):
-    user=User.objects.get(username=username)
-    data=ProfileModel.objects.get(profile_name=user.id)
-    bloglinks=blogpost.objects.all().filter(created_by=user.id)
-    args={'data':data,'bloglinks':bloglinks}
-    return render(request, 'profile_detail.html',args)
+    user=get_object_or_404(User, username=username)
+    if ProfileModel.objects.all().filter(profile_name=user):
+        data=get_object_or_404(ProfileModel,profile_name=user.id)
+        bloglinks=blogpost.objects.all().filter(created_by=user.id)
+        args={'user':user,'data':data,'bloglinks':bloglinks}
+        return render(request, 'profile_detail.html',args)
+    else:
+        return HttpResponse(f'{user.username} Not updated Profile yet!')

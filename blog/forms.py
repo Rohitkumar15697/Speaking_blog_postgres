@@ -17,4 +17,5 @@ class Myblogform(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model=ProfileModel
-        fields="__all__"
+        fields=['full_name','profile_picture', 'bio', 'facebook_url', 'instagram_url']
+        widgets={'full_name':forms.TextInput(attrs={'class':'form-control'}),'bio':forms.Textarea(attrs={'class':'form-control'}),'facebook_url':forms.TextInput(attrs={'class':'form-control'}),'instagram_url':forms.TextInput(attrs={'class':'form-control'})}
