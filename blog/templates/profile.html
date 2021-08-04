@@ -16,7 +16,7 @@
     
 @media screen and (max-width:700px){
 .username{font-size:17px;}
-.card img{height:130px;width:110px;}
+.card img{height:120px;width:110px;}
 
 
     
@@ -39,19 +39,26 @@
                         <div class="col-md-2">
                             <!--if profile picture exist-->
                             {%if data.profile_picture%}
-                                <img src={{data.profile_picture.url}} class="card-img" alt="{{data.profile_name}}profile picture" height="160">
+                                <img src={{data.profile_picture.url}} class="card-img" alt="{{data.profile_name}}profile picture" height="140">
+                            {%else%}
+                                No image
                             {%endif%}
                         </div>
                         <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{data.full_name}}</h5>
-                            <p class="card-text">{{data.bio}}</p>
+                            {%if data.full_name%}
+                                <h5 class="card-title">{{data.full_name}}</h5>
+                            {%endif%}
+
                             {%if data.facebook_url%}
                                 <a href={{data.facebook_url}}>facebook</a>
                             {%endif%}
                             {%if data.instagram_url%}
                                 | <a href={{data.instagram_url}} class='text-danger'>instagram</a>
-                            {%endif%}
+                            {%endif%}<br><br>
+                            {%if data.bio%}
+                            <p class="card-text">{{data.bio | truncatechars:150}}</p>
+                            {%endif%}  
                         </div>
                         </div>
                     </div>
@@ -69,7 +76,13 @@
                             <strong>{{user}}</strong>
                         </a>
                         <ul class="dropdown-menu innerdropdown" aria-labelledby="navbarDropdown">
+                        {%if profile_detail%}
+                            {%for data in profile_detail%}
+                            <li class='list-group-item'><a class="dropdown-item" href={%url 'editprofiledetail' data.id %}>Profile Settings</a></li>
+                            {%endfor%}
+                        {%else%}
                         <li class='list-group-item'><a class="dropdown-item" href={%url 'adddetail'%}>Profile Settings</a></li>
+                        {%endif%}
                             <li class='list-group-item'><a class="dropdown-item" href={%url 'addblog'%}>Add Blog</a></li>
                             <li class='list-group-item'><a class="dropdown-item" href={%url 'confirmlogout' %}>Logout</a></li>
                            

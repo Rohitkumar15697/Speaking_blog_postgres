@@ -5,11 +5,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import blogpost,ProfileModel
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView,UpdateView
 from django.shortcuts import get_object_or_404
 from .forms import Myblogform, ProfileForm
+from django.utils.decorators import method_decorator
 
-import random
 # Create your views here.
 
 @login_required(login_url='login')
@@ -82,6 +82,14 @@ def add_profile_detail(request):
             return redirect('profile')
     return render(request, 'add_profile_detail.html',{'form':form})
 
+
+#Update the user profile
+@method_decorator(login_required, name='dispatch')
+class EditProfileDetail(UpdateView):
+    model=ProfileModel
+    form_class=ProfileForm
+    template_name='add_profile_detail.html'
+    success_url=reverse_lazy('profile')
 
 #View for showing any user data
 def Show_User_Data(request,username):

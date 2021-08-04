@@ -14,6 +14,7 @@ urlpatterns = [
     path('delete_account/<int:pk>',views.DeleteAccount.as_view(), name='deleteaccount'),
     #add profile detail
     path('add_detail', views.add_profile_detail,name='adddetail'),
+    path('edit_profile_detail/<int:pk>',views.EditProfileDetail.as_view(),name='editprofiledetail'),
     #show user data
     path('profiledetail/<str:username>', views.Show_User_Data, name='profiledetail'),
 
