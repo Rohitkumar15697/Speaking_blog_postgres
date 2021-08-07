@@ -74,3 +74,6 @@ class ProfileModel(models.Model):
     facebook_url=models.CharField(max_length=200,blank=True,null=True)
     instagram_url=models.CharField(max_length=200,blank=True,null=True)
 
+    def __str__(self):
+        return self.profile_name
+
