@@ -38,7 +38,7 @@
                     </div>
     </div>
     <br>
-    <div class='allLinks' style='margin-left:100px;'>
+    <div class='allLinks'>
         <h3>All my blogs</h3>
         {%for data in bloglinks%}
             <a href={%url 'homeapp:article' data.slug %}>{{data.title}}</a><br><br>
