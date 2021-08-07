@@ -65,15 +65,21 @@ class CommentModel(models.Model):
 
 
 #User Profile detail
+#function for profile picture file name in media root
+def profile_picture_filename(instance, filename):
+    return 'images/profile_pictures/{0}/{1}'.format(instance.profile_name, filename)
+
 
 class ProfileModel(models.Model):
     profile_name=models.OneToOneField(User, on_delete=models.CASCADE)
     full_name=models.CharField(max_length=200,blank=True,null=True)
-    profile_picture= models.ImageField(upload_to='images/profile_pictures', blank=True, null=True)
+    profile_picture= models.ImageField(upload_to=profile_picture_filename, blank=True, null=True)
     bio=models.TextField(blank=True,null=True)
     facebook_url=models.CharField(max_length=200,blank=True,null=True)
     instagram_url=models.CharField(max_length=200,blank=True,null=True)
 
     def __str__(self):
         return str(self.profile_name)+" ("+(self.full_name)+")"
+
+
 
