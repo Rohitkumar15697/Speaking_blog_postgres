@@ -26,6 +26,7 @@
                         <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{data.full_name}}</h5>
+                            <h6 class='text-muted'>({{data.profile_name}})</h6>
                             <p class="card-text">{{data.bio}}</p>
                             {%if data.facebook_url%}
                                 <a href={{data.facebook_url}}>facebook</a>
@@ -41,7 +42,7 @@
     <div class='allLinks'>
         <h3>All my blogs</h3>
         {%for data in bloglinks%}
-            <a href={%url 'homeapp:article' data.slug %}>{{data.title}}</a><br><br>
+            <a href={%url 'homeapp:article' data.slug %}>{{data.title}}</a><small class='text-muted'> ({{data.date}} )</small><br><br>
         {%endfor%}
 
 
