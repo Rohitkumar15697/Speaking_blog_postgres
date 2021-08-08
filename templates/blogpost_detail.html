@@ -174,7 +174,7 @@
                         {%if user.is_authenticated and comment.name == user or user.is_authenticated and data.created_by == user %}
                         
                                 <a class='btn btn-sm btn-danger'
-                                style='padding:3px; float:right;margin-top:-50px;' href="{%url 'homeapp:article' data.slug %}/deletecomment/{{comment.id}}">Delete</a>
+                                style='padding:3px; float:right;margin-top:-40px;' href="{%url 'homeapp:article' data.slug %}/deletecomment/{{comment.id}}">Delete</a>
                         
                         {%endif%}
                         
