@@ -169,6 +169,14 @@
                         </div>
                         <p style="margin-left:40px;margin-top:-20px;">{{comment.body}}</p>
                             
+                        
+                        <!--delete comment link: who can delete the comment commentor itself or blog owner-->
+                        {%if user.is_authenticated and comment.name == user or user.is_authenticated and data.created_by == user %}
+                        
+                                <a class='btn btn-sm btn-danger' href="{%url 'homeapp:article' data.slug %}/deletecomment/{{comment.id}}">Delete</a>
+                        
+                        {%endif%}
+                        
 <hr>
                         {%endfor%}
                         

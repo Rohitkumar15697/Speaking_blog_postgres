@@ -1,7 +1,7 @@
 from blog.forms import Myblogform
 from django.shortcuts import redirect, render,render,HttpResponse,get_object_or_404
 from django.http import HttpResponseRedirect
-from blog.models import ProfileModel, blogpost,CommentModel
+from blog.models import ProfileModel, blogpost,CommentModel,ProfileModel
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,DeleteView,UpdateView
 from django.urls import reverse_lazy,reverse
@@ -140,8 +140,12 @@ def comment_view(request, slug):
         obj.save()
         return HttpResponseRedirect(reverse('homeapp:article',args=[slug]))
     
-#Delete comment
 
+#Delete comment
+def delete_comment(request, slug,pk):
+    which_comment=CommentModel.objects.get(pk=pk)
+    which_comment.delete()
+    return redirect('homeapp:article',slug)
 
 
     

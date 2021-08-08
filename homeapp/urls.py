@@ -23,6 +23,7 @@ urlpatterns = [
     #path('category/', views.category_list.as_view(),name='category'),  #perfomr link operation on index.html
     path('like/<slug:slug>', views.like_post, name='like_post'),
     path('article/<slug:slug>/comment', views.comment_view, name='comment'),
+    path('article/<slug:slug>/deletecomment/<int:pk>', views.delete_comment, name='deletecomment'),
 
 
 ]
