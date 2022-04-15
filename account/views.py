@@ -24,10 +24,10 @@ def register(request):
 
         if fm.is_valid():
             fm.save()
-            messages.success(request,'Account is created successfully!')
-            email_from=settings.EMAIL_HOST_USER
-            email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
-            send_mail(email_subject,email_body,email_from,email_to, fail_silently=False)
+            # messages.success(request,'Account is created successfully!')
+            # email_from=settings.EMAIL_HOST_USER
+            # email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
+            # send_mail(email_subject,email_body,email_from,email_to, fail_silently=False)
             return redirect('register')
     else:
         fm=createuser()
