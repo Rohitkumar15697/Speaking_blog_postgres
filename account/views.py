@@ -27,7 +27,7 @@ def register(request):
         # send_mail(email_subject,email_body,email_from,email_to, fail_silently=False)
 
         if fm.is_valid():
-            fm.password1 = username
+            fm.password1 = request.first_name
             fm.save()
 
             messages.success(request,'Account is created successfully!')
