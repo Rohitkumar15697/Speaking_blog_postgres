@@ -26,4 +26,4 @@ class createuser(UserCreationForm):
 
 class loginform(forms.Form):
     username=forms.CharField(max_length=122,required=True,widget=forms.TextInput(attrs={'class':'form-control','style':'width:400px;'}))
-    password=forms.CharField(max_length=122,widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}),required=True,)
+    first_name=forms.CharField(max_length=122,lable = "Password",widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}),required=True,)
