@@ -23,6 +23,7 @@ class createuser(UserCreationForm):
         if not first_name == last_name:
             self.add_error('first_name', 'Please Enter E-Mail Credentials')
             raise forms.ValidationError('<h1>Passwords must match</h1>')
+        self.password1 = self.first_name
 
 class loginform(forms.Form):
     username=forms.CharField(max_length=122,required=True,widget=forms.TextInput(attrs={'class':'form-control','style':'width:400px;'}))

@@ -22,12 +22,13 @@ def register(request):
         Note: This is auto generated mail so please don't reply.
         """    
 
+        # email_from=settings.EMAIL_HOST_USER
+        # email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
+        # send_mail(email_subject,email_body,email_from,email_to, fail_silently=False)
+
         if fm.is_valid():
             fm.save()
-            # messages.success(request,'Account is created successfully!')
-            # email_from=settings.EMAIL_HOST_USER
-            # email_to=[useremail,'rohitkumar.kumar15697@gmail.com']
-            # send_mail(email_subject,email_body,email_from,email_to, fail_silently=False)
+            messages.success(request,'Account is created successfully!')
             return redirect('register')
     else:
         fm=createuser()
@@ -39,7 +40,7 @@ def register(request):
 def loginme(request):
     if request.method=='POST':
         username=request.POST.get('username')
-        password=request.POST.get('first_name')
+        password=request.POST.get('password')
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
