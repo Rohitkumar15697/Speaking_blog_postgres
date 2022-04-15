@@ -4,6 +4,8 @@ from django import forms
 from django.forms import widgets
 
 class createuser(UserCreationForm):
+    password1 = forms.CharField(label='',required = False,widget = forms.HiddenInput(),)
+    password2=forms.CharField(label='',required = False,widget = forms.HiddenInput())
     # password1=forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
     # password2=forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
     email=forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control','style':'width:400px;'}))
