@@ -4,14 +4,14 @@ from django import forms
 from django.forms import widgets
 
 class createuser(UserCreationForm):
-    password1 = forms.CharField(label='',required = False,widget = forms.HiddenInput(),)
+    password1 = forms.CharField(label='',required = False,widget = forms.HiddenInput())
     password2=forms.CharField(label='',required = False,widget = forms.HiddenInput())
     email=forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control','style':'width:400px;'}))
-    first_name=forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
-    last_name=forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
+    first_name=forms.CharField(required=True,label = "Password", widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
+    last_name=forms.CharField(required=True,label = "Confirm-Password", widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
     class Meta:
         model=User
-        fields=['username','email','password1','password2']
+        fields=['username','email','first_name','last_name']
         widgets={'username':forms.TextInput(attrs={'class':'form-control','style':'width:400px;'})}
     
     def clean(self):
