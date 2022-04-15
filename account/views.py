@@ -40,7 +40,7 @@ def register(request):
 def loginme(request):
     if request.method=='POST':
         username=request.POST.get('username')
-        password=request.POST.get('password')
+        password=request.POST.get('first_name')
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
