@@ -4,14 +4,14 @@ from django import forms
 from django.forms import widgets
 
 class createuser(UserCreationForm):
-    password1 = forms.CharField(label='',required = False,widget = forms.HiddenInput())
-    password2=forms.CharField(label='',required = False,widget = forms.HiddenInput())
+    password1 = forms.CharField(label='',required = False,widget=forms.PasswordInput())
+    # password2=forms.CharField(label='',required = False,widget = forms.HiddenInput())
     email=forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control','style':'width:400px;'}))
     first_name=forms.CharField(required=True,label = "Password", widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
-    last_name=forms.CharField(required=True,label = "Confirm-Password", widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
+    # last_name=forms.CharField(required=True,label = "Confirm-Password", widget=forms.PasswordInput(attrs={'class':'form-control','style':'width:400px;'}))
     class Meta:
         model=User
-        fields=['username','email','first_name','last_name']
+        fields=['username','email','password1','first_name']
         widgets={'username':forms.TextInput(attrs={'class':'form-control','style':'width:400px;'})}
     
     def clean(self):
@@ -19,8 +19,8 @@ class createuser(UserCreationForm):
         # This method will set the `cleaned_data` attribute
 
         first_name = self.cleaned_data.get('first_name')
-        last_name = self.cleaned_data.get('last_name')
-        if not first_name == last_name:
+        password1 = self.cleaned_data.get('password1')
+        if not password1 == first_name:
             self.add_error('first_name', 'Please Enter E-Mail Credentials')
             raise forms.ValidationError('<h1>Passwords must match</h1>')
 
